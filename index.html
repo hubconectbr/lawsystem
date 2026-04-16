@@ -9,15 +9,15 @@
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: #f1f5f9;
+            background-color: #ffffff;
         }
         .executive-gradient {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 1);
             border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
         .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -62,32 +62,43 @@
             right: 20px;
             z-index: 100;
         }
+
+        /* Hero Background Setup */
+        .hero-bg {
+            background-color: #0f172a; 
+            position: relative;
+            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+        }
+        
+        .hero-img {
+            object-fit: cover;
+            object-position: top center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .text-shadow-premium {
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body class="text-slate-900 min-h-screen flex flex-col">
 
-    <!-- Header Executivo -->
-    <header class="executive-gradient text-white shadow-2xl sticky top-0 z-50 no-print">
-        <div class="max-w-7xl mx-auto px-6 py-5">
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div class="flex items-center gap-5">
-                    <div class="bg-emerald-700 p-3 rounded-2xl shadow-xl shadow-emerald-900/40 cursor-pointer" onclick="location.reload()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-black tracking-tight leading-none uppercase italic">Labor Juriz Quiz</h1>
-                        <p class="text-xs text-emerald-400 font-bold mt-1.5 tracking-[0.2em] uppercase leading-none">Direito do Trabalho I • Acadêmico</p>
-                    </div>
+    <!-- Header Estilo Hotmart -->
+    <header class="bg-white border-b border-slate-100 py-4 px-6 sticky top-0 z-50 no-print">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-600 p-2 rounded-xl text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
                 </div>
-
-                <div class="flex items-center gap-4">
-                    <button onclick="openDonationModal()" class="bg-amber-600 border border-amber-500 px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-amber-500 transition-all flex items-center gap-2">
-                        DOE E APOIE
-                    </button>
-                    <button onclick="checkAccessAndShow('apostila')" class="bg-slate-800 border border-slate-700 px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-emerald-700 transition-all flex items-center gap-2">
-                        Apostila
-                    </button>
-                </div>
+                <h1 class="text-xl font-black text-slate-800 tracking-tighter uppercase italic">Labor Juriz</h1>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold text-slate-500 uppercase tracking-widest">
+                <button onclick="checkAccessAndShow('apostila')" class="hover:text-emerald-600 transition-colors">Apostila</button>
+                <button onclick="openDonationModal()" class="hover:text-emerald-600 transition-colors">Apoiar</button>
+                <a href="https://wa.me/5563981202076" target="_blank" class="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition-all">Comece agora</a>
             </div>
         </div>
     </header>
@@ -111,10 +122,9 @@
                 </div>
                 <h3 class="text-3xl font-black text-slate-900 tracking-tighter uppercase">Apoie a Plataforma</h3>
                 <p class="text-slate-500 font-medium leading-relaxed">
-                    Sua doação garante que a inteligência artificial do <strong>Labor Juriz</strong> continue ativa e gratuita para todos os acadêmicos de Direito.
+                    Sua doação garante que a inteligência artificial continue ativa e gratuita para todos os acadêmicos.
                 </p>
             </div>
-            
             <div class="bg-slate-50 p-8 rounded-[2rem] border-2 border-dashed border-slate-200 text-center space-y-4">
                 <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Chave PIX (E-mail)</p>
                 <div class="flex items-center justify-center gap-3">
@@ -125,83 +135,85 @@
                 </div>
                 <p class="text-[9px] font-bold text-slate-400 uppercase">Titular: Benedito Palheta</p>
             </div>
-
             <button onclick="closeDonationModal()" class="w-full bg-slate-900 text-white font-black py-5 rounded-2xl shadow-xl hover:bg-emerald-600 transition-all uppercase tracking-widest text-xs">Confirmar Apoio</button>
         </div>
     </div>
 
-    <main id="app-container" class="flex-grow flex flex-col items-center justify-center p-6 relative overflow-hidden">
-        
-        <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.02] flex items-center justify-center select-none no-print">
-            <div class="text-[18rem] font-black -rotate-12 tracking-tighter uppercase text-emerald-900">LABOR JURIZ</div>
-        </div>
+    <main id="app-container" class="flex-grow flex flex-col relative overflow-hidden">
 
         <!-- Loading Screen -->
-        <div id="screen-loading" class="flex flex-col items-center gap-6 text-slate-400 py-20 no-print">
+        <div id="screen-loading" class="flex-grow flex flex-col items-center justify-center gap-6 text-slate-400 py-20 no-print">
             <div class="relative">
                 <div class="w-16 h-16 border-4 border-slate-200 border-t-emerald-700 rounded-full animate-spin"></div>
             </div>
             <p class="font-black uppercase tracking-[0.4em] text-[9px]">Sincronizando Labor Lex...</p>
         </div>
 
-        <!-- Landing Screen -->
-        <div id="screen-landing" class="hidden-screen w-full max-w-xl space-y-6 animate-fade-in no-print">
-            <div id="record-card" class="hidden bg-white border border-emerald-100 rounded-[2.5rem] p-7 shadow-sm flex items-center justify-between">
-                <div class="flex items-center gap-5">
-                    <div class="bg-emerald-700 text-white p-4 rounded-3xl shadow-xl shadow-emerald-100">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+        <!-- Landing Screen Inspirada na Hotmart -->
+        <div id="screen-landing" class="hidden-screen flex-grow hero-bg flex flex-col md:flex-row no-print">
+            
+            <!-- Conteúdo da Esquerda -->
+            <div class="w-full md:w-1/2 flex items-center justify-center p-8 lg:p-16 z-10">
+                <div class="max-w-2xl space-y-10 animate-fade-in">
+                    <div class="space-y-6">
+                        <h2 class="text-6xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9] uppercase text-shadow-premium">
+                            AQUI A SUA <br/> NOTA <span class="text-emerald-500">N1</span> <br/> <span class="text-emerald-500">ACONTECE!</span>
+                        </h2>
+                        <ul class="space-y-4 pt-4">
+                            <li class="flex items-center gap-4 text-white font-bold text-xl">
+                                <span class="bg-emerald-500 rounded-full p-1.5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                                Simulado 100% fundamentado na CLT
+                            </li>
+                            <li class="flex items-center gap-4 text-white font-bold text-xl">
+                                <span class="bg-emerald-500 rounded-full p-1.5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                                IA Mentora com suporte em tempo real
+                            </li>
+                            <li class="flex items-center gap-4 text-white font-bold text-xl">
+                                <span class="bg-emerald-500 rounded-full p-1.5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                                Gerador de Desafios e Petições Práticas
+                            </li>
+                        </ul>
                     </div>
-                    <div>
-                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Recorde Global</p>
-                        <p id="record-name" class="font-black text-slate-800 mt-1.5 text-lg leading-none">-</p>
+
+                    <!-- Card de Login Estilo Hotmart -->
+                    <div class="glass-card rounded-[2.5rem] p-10 space-y-6 w-full max-w-md">
+                        <div class="text-center space-y-1">
+                            <h3 class="text-3xl font-black text-slate-800 tracking-tight">Comece sua maratona.</h3>
+                            <p class="text-slate-400 font-bold uppercase text-[11px] tracking-widest">Acesso Acadêmico Gratuito</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">Nome Completo</label>
+                                <input type="text" id="input-name" placeholder="Digite como quer ser chamado" class="w-full bg-slate-50 p-5 rounded-2xl border-2 border-transparent focus:border-emerald-600 focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-lg">
+                            </div>
+                            <button onclick="goToArchetypes()" class="w-full bg-emerald-600 text-white font-black py-6 rounded-2xl shadow-xl shadow-emerald-900/20 hover:bg-emerald-700 hover:-translate-y-1 transition-all active:scale-95 uppercase tracking-widest text-sm">
+                                Iniciar Desafio Agora
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="text-right">
-                    <p id="record-score" class="text-4xl font-black text-emerald-700 tabular-nums leading-none">0</p>
-                    <p class="text-[10px] font-bold text-slate-300 uppercase tracking-tighter">XP</p>
+
+                    <div id="record-card" class="hidden bg-white/10 border border-white/20 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm max-w-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="text-emerald-500"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
+                            <div class="text-sm text-white uppercase tracking-widest">Recorde: <span id="record-name" class="font-black text-emerald-500 ml-1"></span></div>
+                        </div>
+                        <div id="record-score" class="text-white font-black text-xl"></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="glass-card rounded-[3rem] shadow-2xl p-10 lg:p-12 space-y-8">
-                <div class="text-center space-y-3">
-                    <div class="inline-block bg-slate-900 text-white text-[10px] font-black px-5 py-1.5 rounded-full uppercase tracking-[0.2em] mb-2 shadow-xl shadow-slate-200">Plataforma Acadêmica Global</div>
-                    <h2 class="text-4xl font-black text-slate-800 tracking-tight leading-none uppercase tracking-tighter">Direito do Trabalho I</h2>
-                    <p class="text-slate-500 font-medium text-sm italic">Simulado Inteligente N1 Fundamentado</p>
-                </div>
-
-                <div class="bg-slate-50 p-6 rounded-[2rem] border border-slate-200 space-y-4">
-                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] text-center">Temáticas do Quiz ✨</h3>
-                    <div class="grid grid-cols-2 gap-2 text-[10px] font-bold text-slate-600">
-                        <div class="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-100"><span class="text-emerald-500">✔</span> Sujeitos do Contrato</div>
-                        <div class="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-100"><span class="text-emerald-500">✔</span> Requisitos do Vínculo</div>
-                        <div class="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-100"><span class="text-emerald-500">✔</span> Jornada e Exceções</div>
-                        <div class="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-100"><span class="text-emerald-500">✔</span> Intervalos e Repouso</div>
-                        <div class="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-100"><span class="text-emerald-500">✔</span> Férias e Remuneração</div>
-                        <div class="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-100"><span class="text-emerald-500">✔</span> Grupo e Sucessão</div>
-                    </div>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Seu Nome Acadêmico</label>
-                        <input type="text" id="input-name" placeholder="Digite seu nome completo" class="w-full bg-white p-5 rounded-2xl border-2 border-transparent focus:border-emerald-700 outline-none transition-all font-bold placeholder:text-slate-300 shadow-sm">
-                    </div>
-                    <button onclick="goToArchetypes()" class="w-full bg-slate-900 text-white font-black py-6 rounded-[2rem] shadow-2xl hover:bg-emerald-700 transition-all uppercase tracking-widest text-xs">INICIAR MARATONA JURÍDICA</button>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button onclick="checkAccessAndShow('apostila')" class="w-full bg-white border-2 border-slate-200 text-slate-900 font-black py-4 rounded-2xl hover:bg-slate-50 transition-all uppercase tracking-widest text-[10px] flex items-center justify-center gap-2">
-                            Apostila
-                        </button>
-                        <a href="https://wa.me/5563981202076" target="_blank" class="w-full bg-emerald-50 text-emerald-700 font-black py-4 rounded-2xl border-2 border-emerald-100 hover:bg-emerald-100 transition-all uppercase tracking-widest text-[10px] flex items-center justify-center gap-2">
-                            Suporte
-                        </a>
-                    </div>
-                </div>
+            <!-- Imagem da Profissional na Direita -->
+            <div class="hidden md:block md:w-1/2 relative">
+                <!-- Gradiente de Mesclagem Superior/Esquerda -->
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0f172a] via-[#0f172a]/20 to-transparent z-10"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0f172a]/40 z-10"></div>
+                <img src="mulher_negra_direito.jpeg" alt="Profissional do Direito" class="hero-img z-0">
             </div>
         </div>
 
         <!-- Screen Access/Contribution -->
-        <div id="screen-access" class="hidden-screen w-full max-w-lg space-y-6 animate-fade-in no-print">
-            <div class="glass-card rounded-[3rem] shadow-2xl p-10 lg:p-14 space-y-8 text-center">
+        <div id="screen-access" class="hidden-screen flex-grow flex items-center justify-center p-6 bg-slate-50 no-print">
+            <div class="glass-card rounded-[3rem] shadow-2xl p-10 lg:p-14 space-y-8 text-center max-w-lg">
                 <div class="bg-amber-100 text-amber-700 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-4">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 </div>
@@ -211,146 +223,124 @@
                         Acesso ao banco completo e recursos de IA exige uma contribuição única de <strong>R$ 9,90</strong>.
                     </p>
                 </div>
-
                 <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 space-y-4 text-left">
-                    <div class="text-sm space-y-3 font-semibold text-slate-600">
+                    <div class="text-sm font-semibold text-slate-600">
                         <p>1. PIX: <span class="text-emerald-600">financeiro@edupam.com.br</span></p>
                         <p>2. Enviar comprovante: <span class="text-emerald-600">63 98120-2076</span></p>
-                        <p>3. Insira sua chave para desbloqueio imediato.</p>
                     </div>
                 </div>
-
                 <div class="space-y-4">
                     <input type="password" id="u_key" placeholder="Insira sua credencial de 8 dígitos" maxlength="8" class="w-full bg-white p-5 rounded-2xl border-2 border-slate-200 focus:border-emerald-600 outline-none font-bold text-center tracking-widest">
                     <div id="access-status" class="text-xs font-bold min-h-[1rem]"></div>
-                    <div class="grid grid-cols-1 gap-3">
-                        <button onclick="_validate()" class="w-full bg-emerald-700 text-white font-black py-5 rounded-2xl shadow-xl hover:bg-emerald-600 transition-all uppercase tracking-widest text-xs">DESBLOQUEAR TUDO</button>
-                        <a href="https://wa.me/5563981202076?text=Olá!%20Acabei%20de%20fazer%20o%20PIX%20do%20Labor%20Juriz%20e%20gostaria%20da%20minha%20senha." target="_blank" class="w-full bg-white border-2 border-slate-200 text-slate-600 font-black py-5 rounded-2xl hover:bg-slate-50 transition-all uppercase tracking-widest text-[10px] flex items-center justify-center gap-2">
-                            SOLICITAR VIA WHATSAPP
-                        </a>
-                    </div>
+                    <button onclick="_validate()" class="w-full bg-emerald-700 text-white font-black py-5 rounded-2xl shadow-xl hover:bg-emerald-600 transition-all uppercase tracking-widest text-xs">DESBLOQUEAR TUDO</button>
                 </div>
-                
                 <button onclick="showScreen('landing')" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors">Voltar</button>
             </div>
         </div>
 
         <!-- Archetype Screen -->
-        <div id="screen-archetypes" class="hidden-screen w-full max-w-6xl space-y-10 animate-fade-in flex flex-col items-center no-print">
-            <div class="text-center space-y-3">
-                <h2 class="text-4xl font-black text-slate-800 tracking-tight uppercase tracking-tighter">Perfil Acadêmico</h2>
-                <p class="text-slate-500 font-medium">Escolha sua identidade para o simulado.</p>
+        <div id="screen-archetypes" class="hidden-screen flex-grow flex flex-col items-center justify-center p-6 bg-slate-50 no-print">
+            <div class="max-w-6xl w-full space-y-10 animate-fade-in flex flex-col items-center">
+                <div class="text-center space-y-3">
+                    <h2 class="text-4xl font-black text-slate-800 tracking-tight uppercase tracking-tighter">Perfil Acadêmico</h2>
+                    <p class="text-slate-500 font-medium">Escolha sua identidade para o simulado.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full px-6">
+                    <div onclick="selectArch('lawyer')" id="arch-lawyer" class="arch-card cursor-pointer p-10 rounded-[2.5rem] bg-white border-2 border-transparent hover:border-blue-600 shadow-sm transition-all flex flex-col items-center group">
+                        <div class="w-20 h-20 rounded-3xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 shadow-lg"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+                        <span class="font-black text-slate-800 text-lg uppercase tracking-tight">Advogado</span>
+                    </div>
+                    <div onclick="selectArch('judge')" id="arch-judge" class="arch-card cursor-pointer p-10 rounded-[2.5rem] bg-white border-2 border-transparent hover:border-purple-600 shadow-sm transition-all flex flex-col items-center group">
+                        <div class="w-20 h-20 rounded-3xl bg-purple-50 text-purple-600 flex items-center justify-center mb-6 shadow-lg"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14 12-8.5 8.5a2.12 2.12 0 1 1-3-3L11 9"/><path d="M15 13 9 7"/><path d="m21 5-1-1-10 7 8.15 8.15a.5.5 0 0 0 .7 0L21 17a.5.5 0 0 0 0-.7L13 8l7-10Z"/></svg></div>
+                        <span class="font-black text-slate-800 text-lg uppercase tracking-tight">Magistrado</span>
+                    </div>
+                    <div onclick="selectArch('fiscal')" id="arch-fiscal" class="arch-card cursor-pointer p-10 rounded-[2.5rem] bg-white border-2 border-transparent hover:border-emerald-600 shadow-sm transition-all flex flex-col items-center group">
+                        <div class="w-20 h-20 rounded-3xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 shadow-lg"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+                        <span class="font-black text-slate-800 text-lg uppercase tracking-tight">Auditor</span>
+                    </div>
+                    <div onclick="selectArch('intern')" id="arch-intern" class="arch-card cursor-pointer p-10 rounded-[2.5rem] bg-white border-2 border-transparent hover:border-orange-600 shadow-sm transition-all flex flex-col items-center group">
+                        <div class="w-20 h-20 rounded-3xl bg-orange-50 text-orange-600 flex items-center justify-center mb-6 shadow-lg"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                        <span class="font-black text-slate-800 text-lg uppercase tracking-tight">Acadêmico</span>
+                    </div>
+                </div>
+                <button onclick="startQuiz()" id="btn-start" disabled class="bg-slate-900 text-white font-black px-24 py-6 rounded-[2rem] shadow-2xl disabled:opacity-20 uppercase tracking-[0.3em] text-xs">INICIAR SIMULADO (31 QUESTÕES)</button>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full px-6">
-                <div onclick="selectArch('lawyer')" id="arch-lawyer" class="arch-card cursor-pointer p-10 rounded-[2.5rem] bg-white border-2 border-transparent hover:border-blue-600 shadow-sm transition-all flex flex-col items-center group">
-                    <div class="w-20 h-20 rounded-3xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 shadow-lg"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-                    <span class="font-black text-slate-800 text-lg uppercase tracking-tight">Advogado</span>
-                </div>
-                <div onclick="selectArch('judge')" id="arch-judge" class="arch-card cursor-pointer p-10 rounded-[2.5rem] bg-white border-2 border-transparent hover:border-purple-600 shadow-sm transition-all flex flex-col items-center group">
-                    <div class="w-20 h-20 rounded-3xl bg-purple-50 text-purple-600 flex items-center justify-center mb-6 shadow-lg"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14 12-8.5 8.5a2.12 2.12 0 1 1-3-3L11 9"/><path d="M15 13 9 7"/><path d="m21 5-1-1-10 7 8.15 8.15a.5.5 0 0 0 .7 0L21 17a.5.5 0 0 0 0-.7L13 8l7-10Z"/></svg></div>
-                    <span class="font-black text-slate-800 text-lg uppercase tracking-tight">Magistrado</span>
-                </div>
-                <div onclick="selectArch('fiscal')" id="arch-fiscal" class="arch-card cursor-pointer p-10 rounded-[2.5rem] bg-white border-2 border-transparent hover:border-emerald-600 shadow-sm transition-all flex flex-col items-center group">
-                    <div class="w-20 h-20 rounded-3xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 shadow-lg"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-                    <span class="font-black text-slate-800 text-lg uppercase tracking-tight">Auditor</span>
-                </div>
-                <div onclick="selectArch('intern')" id="arch-intern" class="arch-card cursor-pointer p-10 rounded-[2.5rem] bg-white border-2 border-transparent hover:border-orange-600 shadow-sm transition-all flex flex-col items-center group">
-                    <div class="w-20 h-20 rounded-3xl bg-orange-50 text-orange-600 flex items-center justify-center mb-6 shadow-lg"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                    <span class="font-black text-slate-800 text-lg uppercase tracking-tight">Acadêmico</span>
-                </div>
-            </div>
-            <button onclick="startQuiz()" id="btn-start" disabled class="bg-slate-900 text-white font-black px-24 py-6 rounded-[2rem] shadow-2xl disabled:opacity-20 uppercase tracking-[0.3em] text-xs">INICIAR SIMULADO (31 QUESTÕES)</button>
         </div>
 
         <!-- Screen Apostila -->
-        <div id="screen-apostila" class="hidden-screen w-full max-w-5xl space-y-8 animate-fade-in flex flex-col items-center">
-            <div class="flex flex-col lg:flex-row justify-between items-center w-full gap-6 no-print">
-                <div class="flex items-center gap-4">
-                    <button onclick="showScreen('landing')" class="p-3 bg-slate-100 rounded-2xl hover:bg-slate-200 transition-all">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 18-6-6 6-6"/></svg>
-                    </button>
-                    <div>
-                        <h2 class="text-3xl font-black text-slate-800 tracking-tight uppercase">Material de Estudo Acadêmico</h2>
-                        <p class="text-slate-500 font-medium italic">Direito do Trabalho I - Resumo Fundamentado</p>
-                    </div>
-                </div>
+        <div id="screen-apostila" class="hidden-screen flex-grow flex flex-col items-center p-6 bg-slate-50">
+            <div class="flex flex-col lg:flex-row justify-between items-center w-full max-w-5xl gap-6 mb-8 no-print">
+                <button onclick="showScreen('landing')" class="p-3 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <h2 class="text-3xl font-black text-slate-800 tracking-tight uppercase">Material de Estudo</h2>
+                <button onclick="window.print()" class="bg-emerald-700 text-white px-8 py-3 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl">Imprimir PDF</button>
             </div>
-
-            <div id="printable-apostila" class="w-full bg-white rounded-[3rem] shadow-2xl p-10 lg:p-20 border border-slate-100 space-y-12">
+            <div id="printable-apostila" class="w-full max-w-5xl bg-white rounded-[3rem] shadow-2xl p-10 lg:p-20 border border-slate-100 space-y-12">
                 <div class="border-b-4 border-emerald-700 pb-10 text-center space-y-4">
                     <h1 class="text-5xl font-black text-slate-900 uppercase tracking-tighter">Direito do Trabalho I</h1>
-                    <p class="text-xl font-bold text-emerald-700 tracking-[0.2em] uppercase">Simulado Fundamentado Acadêmico</p>
+                    <p class="text-xl font-bold text-emerald-700 tracking-[0.2em] uppercase">Simulado Fundamentado</p>
                 </div>
                 <div id="apostila-content" class="space-y-16 text-slate-800 leading-relaxed"></div>
             </div>
         </div>
 
         <!-- Quiz Screen -->
-        <div id="screen-quiz" class="hidden-screen w-full max-w-5xl glass-card rounded-[3rem] shadow-2xl overflow-hidden animate-fade-in flex flex-col no-print">
-            <div class="h-3 bg-slate-100 w-full"><div id="progress-bar" class="h-full bg-emerald-700 transition-all duration-700" style="width: 0%"></div></div>
-            <div class="p-10 lg:p-16 space-y-12">
-                <div class="flex justify-between items-center">
-                    <span id="question-counter" class="text-[10px] font-black tracking-[0.5em] text-slate-400 uppercase">LABOR JURIZ / QUESTÃO 01</span>
-                    <span id="current-xp" class="bg-emerald-700 text-white px-6 py-2.5 rounded-full font-black text-sm tabular-nums shadow-xl">XP: 0</span>
-                </div>
-
-                <div class="space-y-8">
-                    <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
-                        <div class="space-y-4 flex-grow">
-                            <div class="flex items-center gap-3">
-                                <span id="question-case" class="text-[10px] font-black bg-slate-900 text-white px-4 py-1.5 rounded-lg tracking-widest uppercase">TÓPICO</span>
+        <div id="screen-quiz" class="hidden-screen flex-grow flex flex-col items-center justify-center p-6 bg-slate-50 no-print">
+            <div class="w-full max-w-5xl glass-card rounded-[3rem] overflow-hidden animate-fade-in flex flex-col">
+                <div class="h-3 bg-slate-100 w-full"><div id="progress-bar" class="h-full bg-emerald-700 transition-all duration-700" style="width: 0%"></div></div>
+                <div class="p-10 lg:p-16 space-y-12">
+                    <div class="flex justify-between items-center">
+                        <span id="question-counter" class="text-[10px] font-black tracking-[0.5em] text-slate-400 uppercase">QUESTÃO 01</span>
+                        <span id="current-xp" class="bg-emerald-700 text-white px-6 py-2.5 rounded-full font-black text-sm tabular-nums">XP: 0</span>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
+                            <div class="space-y-4 flex-grow">
+                                <span id="question-case" class="text-[10px] font-black bg-slate-900 text-white px-4 py-1.5 rounded-lg tracking-widest uppercase inline-block">TÓPICO</span>
+                                <h2 id="question-text" class="text-3xl font-bold text-slate-800 leading-[1.2]">Carregando...</h2>
                             </div>
-                            <h2 id="question-text" class="text-3xl font-bold text-slate-800 leading-[1.2]">Carregando...</h2>
-                        </div>
-                        
-                        <div class="flex flex-col gap-3 shrink-0">
-                            <button onclick="askGeminiIA()" id="btn-ai" class="flex items-center gap-4 bg-white border-2 border-emerald-700 text-emerald-700 px-8 py-4 rounded-[1.5rem] hover:bg-emerald-700 hover:text-white transition-all font-black text-xs ai-pulse uppercase tracking-[0.1em] shadow-xl">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                                MENTOR VIRTUAL ✨
-                            </button>
-                            <div id="audio-controls" class="hidden flex gap-2">
-                                <button id="btn-speak" onclick="speakLastResponse()" class="flex-grow flex items-center justify-center gap-4 bg-slate-100 text-slate-600 px-6 py-3 rounded-[1.2rem] hover:bg-slate-200 transition-all font-black text-[10px] uppercase tracking-widest">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-                                    OUVIR
+                            <div class="flex flex-col gap-3 shrink-0">
+                                <button onclick="askGeminiIA()" id="btn-ai" class="flex items-center gap-4 bg-white border-2 border-emerald-700 text-emerald-700 px-8 py-4 rounded-[1.5rem] hover:bg-emerald-700 hover:text-white transition-all font-black text-xs ai-pulse uppercase tracking-[0.1em] shadow-xl">
+                                    MENTOR VIRTUAL ✨
                                 </button>
-                                <button onclick="stopAudio()" class="bg-red-100 text-red-600 p-3 rounded-[1.2rem] hover:bg-red-200 transition-all flex items-center justify-center">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/></svg>
-                                </button>
+                                <div id="audio-controls" class="hidden flex gap-2">
+                                    <button id="btn-speak" onclick="speakLastResponse()" class="flex-grow flex items-center justify-center gap-4 bg-slate-100 text-slate-600 px-6 py-3 rounded-[1.2rem] hover:bg-slate-200 transition-all font-black text-[10px] uppercase tracking-widest">
+                                        OUVIR
+                                    </button>
+                                    <button onclick="stopAudio()" class="bg-red-100 text-red-600 p-3 rounded-[1.2rem] hover:bg-red-200 transition-all flex items-center justify-center">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/></svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div id="ai-response-box" class="hidden bg-slate-900 text-slate-300 p-10 rounded-[2.5rem] text-base leading-relaxed border border-slate-700 shadow-2xl animate-fade-in relative ring-4 ring-emerald-600/20">
-                        <p class="text-emerald-400 font-black text-[10px] uppercase tracking-[0.4em] mb-5">Insight Jurídico Acadêmico</p>
-                        <div id="ai-text" class="custom-scrollbar max-h-56 overflow-y-auto pr-6 font-medium italic leading-loose">Analisando...</div>
-                        <button onclick="this.parentElement.classList.add('hidden')" class="mt-8 text-[10px] font-black uppercase text-slate-500 hover:text-white">Fechar Dica</button>
-                    </div>
-                </div>
-
-                <div id="options-container" class="grid grid-cols-1 gap-5"></div>
-
-                <div id="feedback-box" class="hidden p-10 rounded-[3rem] animate-fade-in border-4 shadow-2xl">
-                    <div class="flex gap-8">
-                        <div id="feedback-icon" class="shrink-0 scale-[1.5]"></div>
-                        <div class="space-y-4">
-                            <p id="feedback-title" class="font-black text-2xl tracking-tighter uppercase"></p>
-                            <div class="bg-white/40 p-8 rounded-[1.5rem] border border-white/40 shadow-inner">
-                                <p id="feedback-explanation" class="text-base text-slate-700 font-semibold leading-relaxed"></p>
-                                <div id="feedback-link-container" class="mt-4 flex gap-4"></div>
-                            </div>
-                            <button onclick="generateDeepCase()" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-emerald-700 transition-all flex items-center gap-2">
-                                CASO PRÁTICO ✨
-                            </button>
+                        <div id="ai-response-box" class="hidden bg-slate-900 text-slate-300 p-10 rounded-[2.5rem] text-base leading-relaxed border border-slate-700 shadow-2xl relative">
+                            <div id="ai-text" class="custom-scrollbar max-h-56 overflow-y-auto pr-6 font-medium italic leading-loose"></div>
+                            <button onclick="this.parentElement.classList.add('hidden')" class="mt-8 text-[10px] font-black uppercase text-slate-500 hover:text-white">Fechar</button>
                         </div>
                     </div>
-                    <button onclick="nextQuestion()" class="mt-10 w-full bg-slate-900 text-white font-black py-6 rounded-[1.5rem] shadow-2xl hover:bg-emerald-700 transition-all uppercase tracking-[0.2em] text-xs">PRÓXIMA QUESTÃO</button>
+                    <div id="options-container" class="grid grid-cols-1 gap-5"></div>
+                    <div id="feedback-box" class="hidden p-10 rounded-[3rem] animate-fade-in border-4 shadow-2xl">
+                        <div class="flex gap-8">
+                            <div id="feedback-icon" class="shrink-0 scale-[1.5]"></div>
+                            <div class="space-y-4">
+                                <p id="feedback-title" class="font-black text-2xl tracking-tighter uppercase"></p>
+                                <div class="bg-white/40 p-8 rounded-[1.5rem] border border-white/40 shadow-inner">
+                                    <p id="feedback-explanation" class="text-base text-slate-700 font-semibold leading-relaxed"></p>
+                                    <div id="feedback-link-container" class="mt-4 flex gap-4"></div>
+                                </div>
+                                <button onclick="generateDeepCase()" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-emerald-700 transition-all">CASO PRÁTICO ✨</button>
+                            </div>
+                        </div>
+                        <button onclick="nextQuestion()" class="mt-10 w-full bg-slate-900 text-white font-black py-6 rounded-[1.5rem] shadow-2xl hover:bg-emerald-700 transition-all uppercase tracking-widest text-xs">PRÓXIMA QUESTÃO</button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Result Screen -->
-        <div id="screen-result" class="hidden-screen w-full max-w-2xl space-y-8 animate-fade-in no-print">
-            <div class="bg-white rounded-[3.5rem] shadow-2xl p-14 text-center space-y-12 border border-slate-50">
+        <div id="screen-result" class="hidden-screen flex-grow flex items-center justify-center p-6 bg-slate-50 no-print">
+            <div class="bg-white rounded-[3.5rem] shadow-2xl p-14 text-center space-y-12 border border-slate-50 max-w-2xl w-full">
                 <div class="relative inline-block text-emerald-600">
                     <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
@@ -359,25 +349,26 @@
                     <p id="final-score" class="text-8xl font-black text-emerald-700 tabular-nums tracking-tighter">0</p>
                     <p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.6em] mt-3">XP ACUMULADO</p>
                 </div>
-                
                 <div id="ai-challenge-box" class="bg-slate-50 p-8 rounded-[2rem] border-2 border-slate-200 text-left space-y-4">
                     <h3 class="font-black text-sm uppercase text-slate-800">PETIÇÃO FINAL ✨</h3>
-                    <div id="challenge-content" class="text-sm text-slate-600 italic">Desafio acadêmico final baseado no seu desempenho global.</div>
+                    <div id="challenge-content" class="text-sm text-slate-600 italic">Gere um desafio prático baseado no seu desempenho.</div>
                     <button id="btn-challenge" onclick="generateFinalChallenge()" class="bg-emerald-700 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest">GERAR DESAFIO FINAL ✨</button>
                 </div>
-
                 <button onclick="location.reload()" class="w-full bg-slate-900 text-white font-black py-6 rounded-[2rem] shadow-2xl hover:bg-emerald-700 transition-all uppercase tracking-[0.4em] text-[10px]">REINICIAR MARATONA</button>
             </div>
         </div>
     </main>
 
-    <footer class="bg-slate-950 text-slate-500 py-16 px-8 border-t border-slate-900 mt-auto no-print">
-        <div class="max-w-7xl mx-auto flex flex-col items-center">
-            <div class="text-center mb-6">
-                <p class="text-white font-black text-xl tracking-tighter uppercase leading-none mb-2">Benedito Palheta</p>
-                <p class="text-[8px] font-black uppercase tracking-[0.8em] text-slate-600">Direitos Reservados • Acadêmico ✨</p>
+    <footer class="bg-white border-t border-slate-100 py-12 px-8 no-print">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <p class="text-slate-900 font-black text-2xl tracking-tighter uppercase leading-none mb-2">Benedito Palheta</p>
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Direitos Reservados © 2026</p>
             </div>
-            <p class="text-[10px] font-bold uppercase tracking-widest">WhatsApp Suporte: 63 98120-2076</p>
+            <div class="flex gap-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                <a href="#" onclick="openDonationModal()" class="hover:text-emerald-600">Apoio</a>
+                <a href="https://wa.me/5563981202076" target="_blank" class="hover:text-emerald-600">WhatsApp</a>
+            </div>
         </div>
     </footer>
 
@@ -421,20 +412,12 @@
         async function init() {
             if (!auth) { showScreen('landing'); return; }
             onAuthStateChanged(auth, (u) => { 
-                if (u) { 
-                    loadRankings(); 
-                    showScreen('landing'); 
-                } 
+                if (u) { loadRankings(); showScreen('landing'); } 
             });
             try { 
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token); 
-                } else {
-                    await signInAnonymously(auth); 
-                }
-            } catch(e) { 
-                showScreen('landing'); 
-            }
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) await signInWithCustomToken(auth, __initial_auth_token); 
+                else await signInAnonymously(auth); 
+            } catch(e) { showScreen('landing'); }
         }
 
         function loadRankings() {
@@ -443,21 +426,12 @@
             onSnapshot(q, (snapshot) => {
                 rankings = snapshot.docs.map(doc => doc.data()).sort((a, b) => b.score - a.score);
                 const list = document.getElementById('ranking-list');
-                if (list) {
-                    list.innerHTML = rankings.slice(0, 5).map((r, i) => `
-                        <div class="p-4 bg-slate-50 rounded-xl flex justify-between font-bold text-xs">
-                            <span>${i+1}º ${r.name}</span>
-                            <span>${r.score} XP</span>
-                        </div>
-                    `).join('');
-                }
+                if (list) list.innerHTML = rankings.slice(0, 5).map((r, i) => `<div class="p-4 bg-slate-50 rounded-xl flex justify-between font-bold text-xs"><span>${i+1}º ${r.name}</span><span>${r.score} XP</span></div>`).join('');
                 if (rankings[0]) {
                     const recCard = document.getElementById('record-card');
-                    const recName = document.getElementById('record-name');
-                    const recScore = document.getElementById('record-score');
                     if (recCard) recCard.classList.remove('hidden');
-                    if (recName) recName.textContent = rankings[0].name;
-                    if (recScore) recScore.textContent = rankings[0].score;
+                    document.getElementById('record-name').textContent = rankings[0].name;
+                    document.getElementById('record-score').textContent = rankings[0].score + " XP";
                 }
             }, (err) => console.log("Offline"));
         }
@@ -467,24 +441,14 @@
             const scoreEl = document.getElementById('final-score');
             if (scoreEl) scoreEl.textContent = score;
             if (auth?.currentUser && db) {
-                try { 
-                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'rankings'), { 
-                        name: userName, 
-                        score: score, 
-                        userId: auth.currentUser.uid, 
-                        timestamp: serverTimestamp() 
-                    }); 
-                } catch(e) { console.error("Erro ao salvar rank", e); }
+                try { await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'rankings'), { name: userName, score: score, userId: auth.currentUser.uid, timestamp: serverTimestamp() }); } catch(e) {}
             }
         }
 
         // --- GEMINI API HELPERS ---
         async function callGemini(prompt, systemInstruction = "") {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] }
-            };
+            const payload = { contents: [{ parts: [{ text: prompt }] }], systemInstruction: { parts: [{ text: systemInstruction }] } };
             try {
                 const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                 const data = await response.json();
@@ -498,19 +462,11 @@
             if (btn) btn.classList.add('animate-pulse');
             try {
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
-                const payload = {
-                    contents: [{ parts: [{ text: `Diga pausadamente: ${text}` }] }],
-                    generationConfig: {
-                        responseModalities: ["AUDIO"],
-                        speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Aoede" } } }
-                    },
-                    model: "gemini-2.5-flash-preview-tts"
-                };
+                const payload = { contents: [{ parts: [{ text: `Diga pausadamente: ${text}` }] }], generationConfig: { responseModalities: ["AUDIO"], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Aoede" } } } }, model: "gemini-2.5-flash-preview-tts" };
                 const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                 const data = await response.json();
                 const pcmData = data.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
                 if (!pcmData) return;
-
                 const audioBlob = pcmToWav(pcmData, 24000);
                 const audioUrl = URL.createObjectURL(audioBlob);
                 currentAudio = new Audio(audioUrl);
@@ -519,33 +475,16 @@
             } catch (e) { if (btn) btn.classList.remove('animate-pulse'); }
         }
 
-        function stopAudio() {
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-                const btn = document.getElementById('btn-speak');
-                if (btn) btn.classList.remove('animate-pulse');
-            }
-        }
+        function stopAudio() { if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; if (document.getElementById('btn-speak')) document.getElementById('btn-speak').classList.remove('animate-pulse'); } }
 
         function pcmToWav(base64, sampleRate) {
             const buffer = Uint8Array.from(atob(base64), c => c.charCodeAt(0)).buffer;
             const view = new DataView(new ArrayBuffer(44 + buffer.byteLength));
             const writeString = (offset, string) => { for (let i = 0; i < string.length; i++) view.setUint8(offset + i, string.charCodeAt(i)); };
-            writeString(0, 'RIFF');
-            view.setUint32(4, 36 + buffer.byteLength, true);
-            writeString(8, 'WAVE');
-            writeString(12, 'fmt ');
-            view.setUint32(16, 16, true);
-            view.setUint16(20, 1, true);
-            view.setUint16(22, 1, true);
-            view.setUint32(24, sampleRate, true);
-            view.setUint32(28, sampleRate * 2, true);
-            view.setUint16(32, 2, true);
-            view.setUint16(34, 16, true);
-            writeString(36, 'data');
-            view.setUint32(40, buffer.byteLength, true);
-            new Uint8Array(view.buffer, 44).set(new Uint8Array(buffer));
+            writeString(0, 'RIFF'); view.setUint32(4, 36 + buffer.byteLength, true); writeString(8, 'WAVE'); writeString(12, 'fmt ');
+            view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true); view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * 2, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true); writeString(36, 'data');
+            view.setUint32(40, buffer.byteLength, true); new Uint8Array(view.buffer, 44).set(new Uint8Array(buffer));
             return new Blob([view.buffer], { type: 'audio/wav' });
         }
 
@@ -553,10 +492,7 @@
         function showScreen(id) {
             stopAudio();
             document.getElementById('screen-loading').style.display = 'none';
-            ['landing', 'archetypes', 'quiz', 'result', 'apostila', 'access'].forEach(s => {
-                const el = document.getElementById(`screen-${s}`);
-                if (el) el.classList.add('hidden-screen');
-            });
+            ['landing', 'archetypes', 'quiz', 'result', 'apostila', 'access'].forEach(s => { const el = document.getElementById(`screen-${s}`); if (el) el.classList.add('hidden-screen'); });
             const target = document.getElementById(`screen-${id}`);
             if (target) target.classList.remove('hidden-screen');
             if (id === 'apostila') renderApostila();
@@ -566,53 +502,32 @@
         function closeDonationModal() { document.getElementById('modal-donation').style.display = 'none'; }
         function copyPix() { 
             const pix = 'financeiro@edupam.com.br';
-            const tempInput = document.createElement('input');
-            document.body.appendChild(tempInput);
-            tempInput.value = pix;
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
+            const tempInput = document.createElement('input'); document.body.appendChild(tempInput);
+            tempInput.value = pix; tempInput.select(); document.execCommand('copy'); document.body.removeChild(tempInput);
             alert('Chave PIX copiada!'); 
         }
 
-        function checkAccessAndShow(screenId) {
-            if (hasFullAccess) showScreen(screenId);
-            else showScreen('access');
-        }
+        function checkAccessAndShow(screenId) { if (hasFullAccess) showScreen(screenId); else showScreen('access'); }
 
         function validateCreds() {
-            var _0x539e = ["value", "u_key", "getElementById", "length", "access-status", "Acesso Negado", "color", "style", "red", "innerText", "substring", "toUpperCase", "toLowerCase", "Acesso Liberado", "green"];
-            var _0x162c = document[_0x539e[2]](_0x539e[1])[_0x539e[0]];
-            var _0x42f1 = document[_0x539e[2]](_0x539e[4]);
-            if (_0x162c[_0x539e[3]] !== 8) { _0x42f1[_0x539e[9]] = _0x539e[5]; _0x42f1[_0x539e[7]][_0x539e[6]] = _0x539e[8]; return; }
-            var _0x12a5 = _0x162c[_0x539e[10]](0, 4);
-            var _0x3e12 = _0x162c[_0x539e[10]](4, 8);
-            if (!/^[a-zA-Z]+$/["test"](_0x12a5) || _0x12a5 === _0x12a5[_0x539e[11]]() || _0x12a5 === _0x12a5[_0x539e[12]]()) { _0x42f1[_0x539e[9]] = _0x539e[5]; _0x42f1[_0x539e[7]][_0x539e[6]] = _0x539e[8]; return; }
-            var _0x82x1 = _0x3e12["split"]("")["map"](Number);
-            if (_0x82x1[0] % 2 !== 0 || _0x82x1[1] % 2 === 0 || _0x82x1[2] % 2 === 0 || _0x82x1[3] !== (_0x82x1[0] << 1)) { _0x42f1[_0x539e[9]] = _0x539e[5]; _0x42f1[_0x539e[7]][_0x539e[6]] = _0x539e[8]; return; }
-            _0x42f1[_0x539e[9]] = _0x539e[13]; _0x42f1[_0x539e[7]][_0x539e[6]] = _0x539e[14];
+            var _0x162c = document.getElementById('u_key').value;
+            var _0x42f1 = document.getElementById('access-status');
+            if (_0x162c.length !== 8) { _0x42f1.innerText = "Acesso Negado"; _0x42f1.style.color = "red"; return; }
+            var _0x12a5 = _0x162c.substring(0, 4);
+            var _0x3e12 = _0x162c.substring(4, 8);
+            if (!/^[a-zA-Z]+$/.test(_0x12a5) || _0x12a5 === _0x12a5.toUpperCase() || _0x12a5 === _0x12a5.toLowerCase()) { _0x42f1.innerText = "Acesso Negado"; _0x42f1.style.color = "red"; return; }
+            var _0x82x1 = _0x3e12.split("").map(Number);
+            if (_0x82x1[0] % 2 !== 0 || _0x82x1[1] % 2 === 0 || _0x82x1[2] % 2 === 0 || _0x82x1[3] !== (_0x82x1[0] << 1)) { _0x42f1.innerText = "Acesso Negado"; _0x42f1.style.color = "red"; return; }
+            _0x42f1.innerText = "Acesso Liberado"; _0x42f1.style.color = "green";
             setTimeout(() => { hasFullAccess = true; showScreen('landing'); }, 800);
         }
 
-        window.goToArchetypes = () => {
-            userName = document.getElementById('input-name').value.trim();
-            if (!userName) return;
-            showScreen('archetypes');
-        };
-
-        window.selectArch = (id) => {
-            selectedArch = id;
-            document.querySelectorAll('.arch-card').forEach(c => c.classList.remove('border-emerald-600', 'ring-8'));
-            const el = document.getElementById(`arch-${id}`);
-            if (el) el.classList.add('border-emerald-600', 'ring-8');
-            document.getElementById('btn-start').disabled = false;
-        };
-
+        window.goToArchetypes = () => { userName = document.getElementById('input-name').value.trim(); if (!userName) return; showScreen('archetypes'); };
+        window.selectArch = (id) => { selectedArch = id; document.querySelectorAll('.arch-card').forEach(c => c.classList.remove('border-emerald-600', 'ring-8')); const el = document.getElementById(`arch-${id}`); if (el) el.classList.add('border-emerald-600', 'ring-8'); document.getElementById('btn-start').disabled = false; };
         window.startQuiz = () => { showScreen('quiz'); renderQuestion(); };
 
         function renderQuestion() {
-            stopAudio();
-            const q = QUIZ_DATA[currentIndex];
+            stopAudio(); const q = QUIZ_DATA[currentIndex];
             document.getElementById('question-counter').textContent = `QUESTÃO ${String(currentIndex + 1).padStart(2, '0')}`;
             document.getElementById('question-case').textContent = q.case;
             document.getElementById('question-text').textContent = q.question;
@@ -621,95 +536,39 @@
             document.getElementById('ai-response-box').classList.add('hidden');
             document.getElementById('feedback-box').classList.add('hidden');
             document.getElementById('audio-controls').classList.add('hidden');
-            
-            const container = document.getElementById('options-container');
-            container.innerHTML = '';
-            q.options.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.className = "w-full p-6 text-left rounded-3xl border-2 border-slate-100 hover:border-emerald-600 hover:bg-emerald-50 text-slate-700 font-bold transition-all";
-                btn.textContent = opt;
-                btn.onclick = () => handleAnswer(idx, btn);
-                container.appendChild(btn);
-            });
+            const container = document.getElementById('options-container'); container.innerHTML = '';
+            q.options.forEach((opt, idx) => { const btn = document.createElement('button'); btn.className = "w-full p-6 text-left rounded-3xl border-2 border-slate-100 hover:border-emerald-600 hover:bg-emerald-50 text-slate-700 font-bold transition-all"; btn.textContent = opt; btn.onclick = () => handleAnswer(idx, btn); container.appendChild(btn); });
         }
 
         function handleAnswer(idx, btn) {
-            const q = QUIZ_DATA[currentIndex];
-            const isCorrect = idx === q.correct;
-            if (isCorrect) score += 100;
-            document.querySelectorAll('#options-container button').forEach(b => b.disabled = true);
-            const fb = document.getElementById('feedback-box');
-            fb.classList.remove('hidden');
+            const q = QUIZ_DATA[currentIndex]; const isCorrect = idx === q.correct;
+            if (isCorrect) score += 100; document.querySelectorAll('#options-container button').forEach(b => b.disabled = true);
+            const fb = document.getElementById('feedback-box'); fb.classList.remove('hidden');
             fb.className = `p-10 rounded-[3rem] animate-fade-in border-4 shadow-2xl ${isCorrect ? 'bg-emerald-50 border-emerald-100' : 'bg-red-50 border-red-100'}`;
             document.getElementById('feedback-title').textContent = isCorrect ? 'ACERTOU!' : 'ERROU!';
             document.getElementById('feedback-explanation').textContent = q.explanation;
-            
-            const linkBox = document.getElementById('feedback-link-container');
-            linkBox.innerHTML = `<a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm#art${q.ref}" target="_blank" class="text-xs font-black text-slate-500 underline uppercase">Consultar CLT</a>`;
-
-            if (isCorrect) btn.classList.add("bg-emerald-600", "text-white");
-            else btn.classList.add("bg-red-600", "text-white");
+            const linkBox = document.getElementById('feedback-link-container'); linkBox.innerHTML = `<a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm#art${q.ref}" target="_blank" class="text-xs font-black text-slate-500 underline uppercase">Consultar CLT</a>`;
+            if (isCorrect) btn.classList.add("bg-emerald-600", "text-white"); else btn.classList.add("bg-red-600", "text-white");
         }
 
-        window.nextQuestion = () => {
-            if (!hasFullAccess && currentIndex >= 1) return showScreen('access');
-            if (currentIndex < QUIZ_DATA.length - 1) { currentIndex++; renderQuestion(); } 
-            else { finalize(); }
-        };
-
+        window.nextQuestion = () => { if (!hasFullAccess && currentIndex >= 1) return showScreen('access'); if (currentIndex < QUIZ_DATA.length - 1) { currentIndex++; renderQuestion(); } else { finalize(); } };
         window.askGeminiIA = async () => {
-            const q = QUIZ_DATA[currentIndex];
-            const box = document.getElementById('ai-response-box');
-            const textEl = document.getElementById('ai-text');
-            const audioCtrl = document.getElementById('audio-controls');
-            box.classList.remove('hidden');
-            textEl.innerText = "Consultando Mentor Virtual...";
+            const q = QUIZ_DATA[currentIndex]; const box = document.getElementById('ai-response-box'); const textEl = document.getElementById('ai-text'); const audioCtrl = document.getElementById('audio-controls');
+            box.classList.remove('hidden'); textEl.innerText = "Consultando Mentor Virtual...";
             const response = await callGemini(`Dê um norte jurídico curto para: ${q.case}. ${q.question}. Não dê a resposta.`, "Você é um mentor de Direito do Trabalho.");
-            textEl.innerHTML = response;
-            lastAIReponseText = response;
-            audioCtrl.classList.remove('hidden');
+            textEl.innerHTML = response; lastAIReponseText = response; audioCtrl.classList.remove('hidden');
         };
-
         window.speakLastResponse = () => speakText(lastAIReponseText);
         window.stopAudio = stopAudio;
+        window.generateDeepCase = async () => { const q = QUIZ_DATA[currentIndex]; const feedbackText = document.getElementById('feedback-explanation'); const response = await callGemini(`Gere um caso prático rápido sobre: ${q.case}.`, "Seja técnico."); feedbackText.innerHTML += `<div class='mt-4 p-4 bg-white/60 rounded-xl text-xs border border-slate-200'><strong>Caso Prático ✨:</strong> ${response}</div>`; };
+        window.generateFinalChallenge = async () => { const content = document.getElementById('challenge-content'); content.innerText = "Redigindo desafio acadêmico..."; const response = await callGemini(`Gere um caso de petição inicial sobre Sucessão para o aluno ${userName}.`, "Seja formal."); content.innerHTML = `<div class='bg-white p-6 rounded-2xl border-2 border-emerald-100 font-serif leading-relaxed shadow-inner'>${response}</div>`; };
 
-        window.generateDeepCase = async () => {
-            const q = QUIZ_DATA[currentIndex];
-            const feedbackText = document.getElementById('feedback-explanation');
-            const response = await callGemini(`Gere um caso prático rápido sobre: ${q.case}.`, "Seja técnico.");
-            feedbackText.innerHTML += `<div class='mt-4 p-4 bg-white/60 rounded-xl text-xs border border-slate-200'><strong>Caso Prático ✨:</strong> ${response}</div>`;
-        };
-
-        window.generateFinalChallenge = async () => {
-            const content = document.getElementById('challenge-content');
-            content.innerText = "Redigindo desafio acadêmico...";
-            const response = await callGemini(`Gere um caso de petição inicial sobre Sucessão para o aluno ${userName}.`, "Seja formal.");
-            content.innerHTML = `<div class='bg-white p-6 rounded-2xl border-2 border-emerald-100 font-serif leading-relaxed shadow-inner'>${response}</div>`;
-        };
-
-        function renderApostila() {
-            const container = document.getElementById('apostila-content');
-            container.innerHTML = QUIZ_DATA.map(q => `
-                <div class='border-l-4 border-emerald-700 pl-4 py-2'>
-                    <div class='text-xs font-black uppercase text-emerald-700'>${q.case}</div>
-                    <div class='text-slate-800 mt-1'>${q.explanation}</div>
-                </div>
-            `).join('');
-        }
+        function renderApostila() { const container = document.getElementById('apostila-content'); container.innerHTML = QUIZ_DATA.map(q => `<div class='border-l-4 border-emerald-700 pl-4 py-2'><div class='text-xs font-black uppercase text-emerald-700'>${q.case}</div><div class='text-slate-800 mt-1'>${q.explanation}</div></div>`).join(''); }
 
         // --- GLOBAL ASSIGNMENTS ---
-        window._validate = validateCreds;
-        window.showScreen = showScreen;
-        window.checkAccessAndShow = checkAccessAndShow;
-        window.openDonationModal = openDonationModal;
-        window.closeDonationModal = closeDonationModal;
-        window.copyPix = copyPix;
+        window._validate = validateCreds; window.showScreen = showScreen; window.checkAccessAndShow = checkAccessAndShow; window.openDonationModal = openDonationModal; window.closeDonationModal = closeDonationModal; window.copyPix = copyPix;
 
-        // --- STARTUP ---
-        window.onload = function() {
-            init();
-        };
-
+        window.onload = function() { init(); };
     </script>
 </body>
 </html>
