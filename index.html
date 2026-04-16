@@ -63,12 +63,11 @@
             z-index: 100;
         }
 
-        /* Hero Background Setup - Expandido para ocupar mais tela */
         .hero-bg {
             background-color: #0f172a; 
             position: relative;
             overflow: hidden;
-            min-height: 92vh; /* Aumentado de 85vh para 92vh */
+            min-height: 100vh;
             display: flex;
         }
         
@@ -80,18 +79,14 @@
         }
 
         .text-shadow-premium {
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .banner-mask {
-            mask-image: linear-gradient(to right, black 70%, transparent 100%);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
     </style>
 </head>
 <body class="text-slate-900 min-h-screen flex flex-col">
 
     <!-- Header Estilo Hotmart -->
-    <header class="bg-white border-b border-slate-100 py-5 px-8 sticky top-0 z-50 no-print">
+    <header class="bg-white border-b border-slate-100 py-4 px-8 sticky top-0 z-50 no-print">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="bg-emerald-600 p-2 rounded-xl text-white">
@@ -100,9 +95,10 @@
                 <h1 class="text-2xl font-black text-slate-800 tracking-tighter uppercase italic">Labor Juriz</h1>
             </div>
             <div class="hidden md:flex items-center gap-10 text-sm font-bold text-slate-500 uppercase tracking-widest">
-                <button onclick="checkAccessAndShow('apostila')" class="hover:text-emerald-600 transition-colors">Apostila</button>
+                <!-- Botão Apostila: Oculto até o usuário entrar -->
+                <button id="header-btn-apostila" onclick="checkAccessAndShow('apostila')" class="hidden hover:text-emerald-600 transition-colors">Apostila</button>
                 <button onclick="openDonationModal()" class="hover:text-emerald-600 transition-colors">Apoiar</button>
-                <a href="https://wa.me/5563981202076" target="_blank" class="bg-emerald-600 text-white px-8 py-3 rounded-full hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200">Comece agora</a>
+                <a href="https://wa.me/5563981202076" target="_blank" class="bg-emerald-600 text-white px-8 py-3 rounded-full hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100">Suporte</a>
             </div>
         </div>
     </header>
@@ -150,73 +146,61 @@
             <div class="relative">
                 <div class="w-16 h-16 border-4 border-slate-200 border-t-emerald-700 rounded-full animate-spin"></div>
             </div>
-            <p class="font-black uppercase tracking-[0.4em] text-[9px]">Sincronizando Labor Lex...</p>
+            <p class="font-black uppercase tracking-[0.4em] text-[9px]">Acessando Guia de Estudos...</p>
         </div>
 
-        <!-- Landing Screen Inspirada na Hotmart -->
+        <!-- Landing Screen - Foco na Entrada Direta -->
         <div id="screen-landing" class="hidden-screen flex-grow hero-bg flex flex-col md:flex-row no-print">
             
-            <!-- Conteúdo da Esquerda -->
-            <div class="w-full md:w-7/12 flex items-center justify-center p-8 lg:p-24 z-10">
-                <div class="max-w-3xl space-y-12 animate-fade-in">
-                    <div class="space-y-8">
-                        <h2 class="text-6xl lg:text-9xl font-black text-white tracking-tighter leading-[0.85] uppercase text-shadow-premium">
-                            AQUI A SUA <br/> NOTA <span class="text-emerald-500">N1</span> <br/> <span class="text-emerald-500">ACONTECE!</span>
+            <!-- Conteúdo da Esquerda: Prioridade no Nome -->
+            <div class="w-full md:w-7/12 flex items-center justify-center p-8 lg:p-20 z-10">
+                <div class="max-w-2xl space-y-8 animate-fade-in">
+                    
+                    <div class="space-y-4">
+                        <p class="text-emerald-500 font-black uppercase tracking-[0.3em] text-sm">Direito do Trabalho I</p>
+                        <h2 class="text-5xl lg:text-7xl font-black text-white tracking-tighter leading-[0.95] uppercase text-shadow-premium">
+                            Seu estudo dirigido <br/> e guia por <span class="text-emerald-500">IA.</span>
                         </h2>
-                        <ul class="space-y-5 pt-4">
-                            <li class="flex items-center gap-4 text-white font-bold text-2xl">
-                                <span class="bg-emerald-500 rounded-full p-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                Simulado 100% fundamentado na CLT
-                            </li>
-                            <li class="flex items-center gap-4 text-white font-bold text-2xl">
-                                <span class="bg-emerald-500 rounded-full p-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                IA Mentora com suporte em tempo real
-                            </li>
-                            <li class="flex items-center gap-4 text-white font-bold text-2xl">
-                                <span class="bg-emerald-500 rounded-full p-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                                Gerador de Desafios e Petições Práticas
-                            </li>
-                        </ul>
+                        <p class="text-slate-300 font-bold text-lg max-w-lg">
+                            Domine a CLT com suporte inteligente em tempo real e simulados fundamentados.
+                        </p>
                     </div>
 
-                    <!-- Card de Login Estilo Hotmart -->
-                    <div class="glass-card rounded-[3rem] p-12 space-y-8 w-full max-w-lg">
-                        <div class="text-center space-y-1">
-                            <h3 class="text-4xl font-black text-slate-800 tracking-tight">Comece sua maratona.</h3>
-                            <p class="text-slate-400 font-bold uppercase text-xs tracking-widest">Acesso Acadêmico Gratuito</p>
+                    <!-- Card de Entrada: Sem Necessidade de Rolagem -->
+                    <div class="glass-card rounded-[3rem] p-10 lg:p-12 space-y-8 w-full max-w-lg">
+                        <div class="space-y-2">
+                            <h3 class="text-3xl font-black text-slate-800 tracking-tight leading-none">Digite seu nome para começar.</h3>
+                            <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Inicie seu desafio acadêmico agora</p>
                         </div>
                         <div class="space-y-6">
                             <div class="space-y-2">
-                                <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-4">Nome Completo</label>
-                                <input type="text" id="input-name" placeholder="Digite como quer ser chamado" class="w-full bg-slate-50 p-6 rounded-2xl border-2 border-transparent focus:border-emerald-600 focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-xl">
+                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">Nome Completo</label>
+                                <input type="text" id="input-name" placeholder="Como quer ser chamado?" class="w-full bg-slate-50 p-6 rounded-2xl border-2 border-transparent focus:border-emerald-600 focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-xl shadow-sm">
                             </div>
-                            <button onclick="goToArchetypes()" class="w-full bg-emerald-600 text-white font-black py-7 rounded-2xl shadow-2xl shadow-emerald-900/20 hover:bg-emerald-700 hover:-translate-y-1 transition-all active:scale-95 uppercase tracking-widest text-lg">
-                                Iniciar Desafio Agora
+                            <button onclick="goToArchetypes()" class="w-full bg-emerald-600 text-white font-black py-7 rounded-2xl shadow-2xl shadow-emerald-900/30 hover:bg-emerald-700 hover:-translate-y-1 transition-all active:scale-95 uppercase tracking-widest text-lg">
+                                Iniciar Maratona ✨
                             </button>
                         </div>
                     </div>
 
-                    <div id="record-card" class="hidden bg-white/10 border border-white/20 rounded-2xl p-6 flex items-center justify-between backdrop-blur-sm max-w-md">
-                        <div class="flex items-center gap-4">
-                            <div class="text-emerald-500"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
-                            <div class="text-base text-white uppercase tracking-widest">Recorde: <span id="record-name" class="font-black text-emerald-500 ml-1"></span></div>
+                    <div class="flex flex-col md:flex-row gap-6 pt-4">
+                        <div class="flex items-center gap-3 text-white/70 font-bold text-sm">
+                            <span class="bg-emerald-500/20 text-emerald-400 rounded-full p-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            Fundamentação N1
                         </div>
-                        <div id="record-score" class="text-white font-black text-2xl"></div>
+                        <div class="flex items-center gap-3 text-white/70 font-bold text-sm">
+                            <span class="bg-emerald-500/20 text-emerald-400 rounded-full p-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            IA Mentora
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Imagem da Profissional na Direita (Aqui está a imagem que você procurava!) -->
+            <!-- Imagem da Profissional na Direita -->
             <div class="hidden md:block md:w-5/12 relative h-auto">
-                <!-- Gradiente de Mesclagem Superior/Esquerda -->
-                <div class="absolute inset-0 bg-gradient-to-r from-[#0f172a] via-[#0f172a]/30 to-transparent z-10"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0f172a] via-[#0f172a]/20 to-transparent z-10"></div>
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0f172a]/50 z-10"></div>
-                
-                <!-- A TAG DA IMAGEM ESTÁ LOGO ABAIXO -->
-                <img src="images/mulher_negra_direito.jpeg" 
-                     alt="Profissional do Direito" 
-                     class="hero-img z-0"
-                     onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1000'">
+                <img src="images/mulher_negra_direito.jpeg" alt="Profissional do Direito" class="hero-img z-0">
             </div>
         </div>
 
@@ -229,7 +213,7 @@
                 <div class="space-y-4">
                     <h2 class="text-3xl font-black text-slate-800 tracking-tighter uppercase">Credenciais de Acesso</h2>
                     <p class="text-slate-500 font-medium leading-relaxed">
-                        Acesso ao banco completo e recursos de IA exige uma contribuição única de <strong>R$ 9,90</strong>.
+                        O acesso à Apostila completa e desafios de Petição exige uma contribuição de <strong>R$ 9,90</strong>.
                     </p>
                 </div>
                 <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 space-y-4 text-left">
@@ -239,9 +223,9 @@
                     </div>
                 </div>
                 <div class="space-y-4">
-                    <input type="password" id="u_key" placeholder="Insira sua credencial de 8 dígitos" maxlength="8" class="w-full bg-white p-5 rounded-2xl border-2 border-slate-200 focus:border-emerald-600 outline-none font-bold text-center tracking-widest">
+                    <input type="password" id="u_key" placeholder="Insira sua credencial de 8 dígitos" maxlength="8" class="w-full bg-white p-5 rounded-2xl border-2 border-slate-200 focus:border-emerald-600 outline-none font-bold text-center tracking-widest uppercase">
                     <div id="access-status" class="text-xs font-bold min-h-[1rem]"></div>
-                    <button onclick="_validate()" class="w-full bg-emerald-700 text-white font-black py-5 rounded-2xl shadow-xl hover:bg-emerald-600 transition-all uppercase tracking-widest text-xs">DESBLOQUEAR TUDO</button>
+                    <button onclick="_validate()" class="w-full bg-emerald-700 text-white font-black py-5 rounded-2xl shadow-xl hover:bg-emerald-600 transition-all uppercase tracking-widest text-xs">DESBLOQUEAR PLATAFORMA</button>
                 </div>
                 <button onclick="showScreen('landing')" class="text-xs font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors">Voltar</button>
             </div>
@@ -287,7 +271,7 @@
             </div>
             <div id="printable-apostila" class="w-full max-w-5xl bg-white rounded-[3rem] shadow-2xl p-10 lg:p-20 border border-slate-100 space-y-12">
                 <div class="border-b-4 border-emerald-700 pb-10 text-center space-y-4">
-                    <h1 class="text-5xl font-black text-slate-900 uppercase tracking-tighter">Direito do Trabalho I</h1>
+                    <h1 class="text-5xl font-black text-slate-900 uppercase tracking-tighter text-shadow-premium">Direito do Trabalho I</h1>
                     <p class="text-xl font-bold text-emerald-700 tracking-[0.2em] uppercase">Simulado Fundamentado</p>
                 </div>
                 <div id="apostila-content" class="space-y-16 text-slate-800 leading-relaxed"></div>
@@ -386,7 +370,6 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // FIREBASE SETUP
         let fbConfig = {};
         try { if (typeof __firebase_config !== 'undefined') fbConfig = typeof __firebase_config === 'string' ? JSON.parse(__firebase_config) : __firebase_config; } catch (e) {}
         const apiKey = ""; 
@@ -417,12 +400,9 @@
             { id: 10, case: "Sucessão de Empregadores", question: "O que ocorre com os contratos quando há mudança na propriedade da empresa?", options: ["Os contratos são automaticamente rescindidos.", "A sucessão não afeta os direitos adquiridos nem os contratos vigentes.", "O novo dono pode reduzir todos os salários.", "O antigo dono continua sendo o único responsável por 10 anos."], correct: 1, hint: "A empresa é a unidade econômica que responde.", explanation: "A mudança na propriedade não afeta os contratos de trabalho dos respectivos empregados.", ref: "448" }
         ];
 
-        // --- AUTH & DATA INIT ---
         async function init() {
             if (!auth) { showScreen('landing'); return; }
-            onAuthStateChanged(auth, (u) => { 
-                if (u) { loadRankings(); showScreen('landing'); } 
-            });
+            onAuthStateChanged(auth, (u) => { if (u) { loadRankings(); showScreen('landing'); } });
             try { 
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) await signInWithCustomToken(auth, __initial_auth_token); 
                 else await signInAnonymously(auth); 
@@ -436,12 +416,6 @@
                 rankings = snapshot.docs.map(doc => doc.data()).sort((a, b) => b.score - a.score);
                 const list = document.getElementById('ranking-list');
                 if (list) list.innerHTML = rankings.slice(0, 5).map((r, i) => `<div class="p-4 bg-slate-50 rounded-xl flex justify-between font-bold text-xs"><span>${i+1}º ${r.name}</span><span>${r.score} XP</span></div>`).join('');
-                if (rankings[0]) {
-                    const recCard = document.getElementById('record-card');
-                    if (recCard) recCard.classList.remove('hidden');
-                    document.getElementById('record-name').textContent = rankings[0].name;
-                    document.getElementById('record-score').textContent = rankings[0].score + " XP";
-                }
             }, (err) => console.log("Offline"));
         }
 
@@ -454,7 +428,6 @@
             }
         }
 
-        // --- GEMINI API HELPERS ---
         async function callGemini(prompt, systemInstruction = "") {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             const payload = { contents: [{ parts: [{ text: prompt }] }], systemInstruction: { parts: [{ text: systemInstruction }] } };
@@ -497,7 +470,6 @@
             return new Blob([view.buffer], { type: 'audio/wav' });
         }
 
-        // --- UI FUNCTIONS ---
         function showScreen(id) {
             stopAudio();
             document.getElementById('screen-loading').style.display = 'none';
@@ -531,7 +503,14 @@
             setTimeout(() => { hasFullAccess = true; showScreen('landing'); }, 800);
         }
 
-        window.goToArchetypes = () => { userName = document.getElementById('input-name').value.trim(); if (!userName) return; showScreen('archetypes'); };
+        window.goToArchetypes = () => { 
+            userName = document.getElementById('input-name').value.trim(); 
+            if (!userName) return; 
+            // Liberar botão da apostila após identificação
+            document.getElementById('header-btn-apostila').classList.remove('hidden');
+            showScreen('archetypes'); 
+        };
+        
         window.selectArch = (id) => { selectedArch = id; document.querySelectorAll('.arch-card').forEach(c => c.classList.remove('border-emerald-600', 'ring-8')); const el = document.getElementById(`arch-${id}`); if (el) el.classList.add('border-emerald-600', 'ring-8'); document.getElementById('btn-start').disabled = false; };
         window.startQuiz = () => { showScreen('quiz'); renderQuestion(); };
 
@@ -574,7 +553,6 @@
 
         function renderApostila() { const container = document.getElementById('apostila-content'); container.innerHTML = QUIZ_DATA.map(q => `<div class='border-l-4 border-emerald-700 pl-4 py-2'><div class='text-xs font-black uppercase text-emerald-700'>${q.case}</div><div class='text-slate-800 mt-1'>${q.explanation}</div></div>`).join(''); }
 
-        // --- GLOBAL ASSIGNMENTS ---
         window._validate = validateCreds; window.showScreen = showScreen; window.checkAccessAndShow = checkAccessAndShow; window.openDonationModal = openDonationModal; window.closeDonationModal = closeDonationModal; window.copyPix = copyPix;
 
         window.onload = function() { init(); };
