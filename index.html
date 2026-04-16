@@ -10,6 +10,7 @@
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #ffffff;
+            overflow-x: hidden;
         }
         .executive-gradient {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -63,11 +64,12 @@
             z-index: 100;
         }
 
+        /* Banner ocupa toda a altura da tela inicial */
         .hero-bg {
             background-color: #0f172a; 
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
+            height: calc(100vh - 80px); /* Ocupa o restante da tela após o header */
             display: flex;
         }
         
@@ -79,31 +81,29 @@
         }
 
         .text-shadow-premium {
-            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
         }
     </style>
 </head>
 <body class="text-slate-900 min-h-screen flex flex-col">
 
-    <!-- Header Estilo Hotmart -->
-    <header class="bg-white border-b border-slate-100 py-4 px-8 sticky top-0 z-50 no-print">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="bg-emerald-600 p-2 rounded-xl text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
-                </div>
-                <h1 class="text-2xl font-black text-slate-800 tracking-tighter uppercase italic">Labor Juriz</h1>
+    <!-- Header Acadêmico -->
+    <header class="bg-white border-b border-slate-100 h-20 px-8 sticky top-0 z-50 flex items-center justify-between no-print">
+        <div class="flex items-center gap-3">
+            <div class="bg-emerald-600 p-2 rounded-xl text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
             </div>
-            <div class="hidden md:flex items-center gap-10 text-sm font-bold text-slate-500 uppercase tracking-widest">
-                <!-- Botão Apostila: Oculto até o usuário entrar -->
-                <button id="header-btn-apostila" onclick="checkAccessAndShow('apostila')" class="hidden hover:text-emerald-600 transition-colors">Apostila</button>
-                <button onclick="openDonationModal()" class="hover:text-emerald-600 transition-colors">Apoiar</button>
-                <a href="https://wa.me/5563981202076" target="_blank" class="bg-emerald-600 text-white px-8 py-3 rounded-full hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100">Suporte</a>
-            </div>
+            <h1 class="text-2xl font-black text-slate-800 tracking-tighter uppercase italic">Labor Juriz</h1>
+        </div>
+        <div class="hidden md:flex items-center gap-10 text-sm font-bold text-slate-500 uppercase tracking-widest">
+            <!-- Botão Apostila: Oculto até o usuário entrar -->
+            <button id="header-btn-apostila" onclick="checkAccessAndShow('apostila')" class="hidden hover:text-emerald-600 transition-colors">Apostila</button>
+            <button onclick="openDonationModal()" class="hover:text-emerald-600 transition-colors">Apoiar</button>
+            <a href="https://wa.me/5563981202076" target="_blank" class="bg-emerald-600 text-white px-8 py-3 rounded-full hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100">Suporte</a>
         </div>
     </header>
 
-    <!-- WhatsApp Floating Button -->
+    <!-- Floating WhatsApp -->
     <a href="https://wa.me/5563981202076?text=Olá!%20Gostaria%20de%20tirar%20uma%20dúvida%20sobre%20a%20Plataforma%20Labor%20Juriz." target="_blank" class="whatsapp-float no-print transition-transform hover:scale-110">
         <div class="bg-emerald-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -121,9 +121,7 @@
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
                 </div>
                 <h3 class="text-3xl font-black text-slate-900 tracking-tighter uppercase">Apoie a Plataforma</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">
-                    Sua doação garante que a inteligência artificial continue ativa e gratuita para todos os acadêmicos.
-                </p>
+                <p class="text-slate-500 font-medium leading-relaxed">Sua doação garante que a inteligência artificial continue ativa e gratuita para todos os acadêmicos.</p>
             </div>
             <div class="bg-slate-50 p-8 rounded-[2rem] border-2 border-dashed border-slate-200 text-center space-y-4">
                 <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Chave PIX (E-mail)</p>
@@ -146,61 +144,59 @@
             <div class="relative">
                 <div class="w-16 h-16 border-4 border-slate-200 border-t-emerald-700 rounded-full animate-spin"></div>
             </div>
-            <p class="font-black uppercase tracking-[0.4em] text-[9px]">Acessando Guia de Estudos...</p>
+            <p class="font-black uppercase tracking-[0.4em] text-[9px]">Sincronizando Labor Lex...</p>
         </div>
 
-        <!-- Landing Screen - Foco na Entrada Direta -->
+        <!-- Landing Screen - Foco na Entrada Direta e Banner Máximo -->
         <div id="screen-landing" class="hidden-screen flex-grow hero-bg flex flex-col md:flex-row no-print">
             
-            <!-- Conteúdo da Esquerda: Prioridade no Nome -->
-            <div class="w-full md:w-7/12 flex items-center justify-center p-8 lg:p-20 z-10">
-                <div class="max-w-2xl space-y-8 animate-fade-in">
+            <!-- Conteúdo da Esquerda: Prioridade Máxima no Nome -->
+            <!-- Ajuste de Padding-Top (pt-12) para evitar o corte do título -->
+            <div class="w-full md:w-7/12 flex items-center justify-center p-8 lg:p-12 lg:pt-20 z-10">
+                <div class="max-w-2xl space-y-10 animate-fade-in">
                     
                     <div class="space-y-4">
-                        <p class="text-emerald-500 font-black uppercase tracking-[0.3em] text-sm">Direito do Trabalho I</p>
-                        <h2 class="text-5xl lg:text-7xl font-black text-white tracking-tighter leading-[0.95] uppercase text-shadow-premium">
-                            Seu estudo dirigido <br/> e guiado por <span class="text-emerald-500">IA.</span>
+                        <p class="text-emerald-500 font-black uppercase tracking-[0.3em] text-xs">Simulado N1 Fundamentado</p>
+                        <h2 class="text-4xl lg:text-7xl font-black text-white tracking-tighter leading-[0.95] uppercase text-shadow-premium">
+                            SEU ESTUDO DIRIGIDO <br/> E GUIADO POR <span class="text-emerald-500">IA.</span>
                         </h2>
-                        <p class="text-slate-300 font-bold text-lg max-w-lg">
-                            Domine a CLT com suporte inteligente em tempo real e simulados fundamentados.
-                        </p>
                     </div>
 
-                    <!-- Card de Entrada: Sem Necessidade de Rolagem -->
-                    <div class="glass-card rounded-[3rem] p-10 lg:p-12 space-y-8 w-full max-w-lg">
-                        <div class="space-y-2">
-                            <h3 class="text-3xl font-black text-slate-800 tracking-tight leading-none">Digite seu nome para começar.</h3>
-                            <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Inicie seu desafio acadêmico agora</p>
+                    <!-- Card de Entrada: Visível sem Rolagem -->
+                    <div class="glass-card rounded-[3rem] p-10 space-y-8 w-full max-w-lg">
+                        <div class="space-y-1">
+                            <h3 class="text-2xl font-black text-slate-800 tracking-tight leading-none">Digite seu nome para começar.</h3>
+                            <p class="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Acesso imediato para acadêmicos</p>
                         </div>
                         <div class="space-y-6">
                             <div class="space-y-2">
-                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">Nome Completo</label>
-                                <input type="text" id="input-name" placeholder="Como quer ser chamado?" class="w-full bg-slate-50 p-6 rounded-2xl border-2 border-transparent focus:border-emerald-600 focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-xl shadow-sm">
+                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">Como quer ser chamado?</label>
+                                <input type="text" id="input-name" placeholder="Digite seu nome completo" class="w-full bg-slate-50 p-6 rounded-2xl border-2 border-transparent focus:border-emerald-600 focus:bg-white outline-none transition-all font-bold placeholder:text-slate-300 text-xl shadow-sm">
                             </div>
-                            <button onclick="goToArchetypes()" class="w-full bg-emerald-600 text-white font-black py-7 rounded-2xl shadow-2xl shadow-emerald-900/30 hover:bg-emerald-700 hover:-translate-y-1 transition-all active:scale-95 uppercase tracking-widest text-lg">
-                                Iniciar Maratona ✨
+                            <button onclick="goToArchetypes()" class="w-full bg-emerald-600 text-white font-black py-7 rounded-2xl shadow-xl shadow-emerald-900/30 hover:bg-emerald-700 hover:-translate-y-1 transition-all active:scale-95 uppercase tracking-widest text-lg">
+                                INICIAR DESAFIO ✨
                             </button>
                         </div>
                     </div>
 
-                    <div class="flex flex-col md:flex-row gap-6 pt-4">
-                        <div class="flex items-center gap-3 text-white/70 font-bold text-sm">
+                    <div class="flex gap-8 pt-2">
+                        <div class="flex items-center gap-3 text-white/70 font-bold text-xs uppercase tracking-wider">
                             <span class="bg-emerald-500/20 text-emerald-400 rounded-full p-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                            Fundamentação N1
+                            CLT Atualizada
                         </div>
-                        <div class="flex items-center gap-3 text-white/70 font-bold text-sm">
+                        <div class="flex items-center gap-3 text-white/70 font-bold text-xs uppercase tracking-wider">
                             <span class="bg-emerald-500/20 text-emerald-400 rounded-full p-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                            IA Mentora
+                            Mentor de IA
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Imagem da Profissional na Direita -->
-            <div class="hidden md:block md:w-5/12 relative h-auto">
+            <div class="hidden md:block md:w-5/12 relative h-full">
                 <div class="absolute inset-0 bg-gradient-to-r from-[#0f172a] via-[#0f172a]/20 to-transparent z-10"></div>
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0f172a]/50 z-10"></div>
-                <img src="images/mulher_negra_direito.jpeg" alt="Profissional do Direito" class="hero-img z-0">
+                <img src="images/mulher_negra_direito.jpeg" alt="Profissional do Direito" class="hero-img z-0" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1000'">
             </div>
         </div>
 
@@ -211,19 +207,19 @@
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 </div>
                 <div class="space-y-4">
-                    <h2 class="text-3xl font-black text-slate-800 tracking-tighter uppercase">Credenciais de Acesso</h2>
+                    <h2 class="text-3xl font-black text-slate-800 tracking-tighter uppercase">Credenciais Acadêmicas</h2>
                     <p class="text-slate-500 font-medium leading-relaxed">
-                        O acesso à Apostila completa e desafios de Petição exige uma contribuição de <strong>R$ 9,90</strong>.
+                        O acesso à Apostila e ao Gerador de Petições exige uma contribuição única de <strong>R$ 9,90</strong>.
                     </p>
                 </div>
                 <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 space-y-4 text-left">
                     <div class="text-sm font-semibold text-slate-600">
-                        <p>1. PIX: <span class="text-emerald-600">financeiro@edupam.com.br</span></p>
-                        <p>2. Enviar comprovante: <span class="text-emerald-600">63 98120-2076</span></p>
+                        <p>1. PIX: <span class="text-emerald-600 font-black">financeiro@edupam.com.br</span></p>
+                        <p>2. WhatsApp: <span class="text-emerald-600 font-black">63 98120-2076</span></p>
                     </div>
                 </div>
                 <div class="space-y-4">
-                    <input type="password" id="u_key" placeholder="Insira sua credencial de 8 dígitos" maxlength="8" class="w-full bg-white p-5 rounded-2xl border-2 border-slate-200 focus:border-emerald-600 outline-none font-bold text-center tracking-widest uppercase">
+                    <input type="password" id="u_key" placeholder="Sua credencial de 8 dígitos" maxlength="8" class="w-full bg-white p-5 rounded-2xl border-2 border-slate-200 focus:border-emerald-600 outline-none font-bold text-center tracking-widest uppercase">
                     <div id="access-status" class="text-xs font-bold min-h-[1rem]"></div>
                     <button onclick="_validate()" class="w-full bg-emerald-700 text-white font-black py-5 rounded-2xl shadow-xl hover:bg-emerald-600 transition-all uppercase tracking-widest text-xs">DESBLOQUEAR PLATAFORMA</button>
                 </div>
@@ -235,8 +231,8 @@
         <div id="screen-archetypes" class="hidden-screen flex-grow flex flex-col items-center justify-center p-6 bg-slate-50 no-print">
             <div class="max-w-6xl w-full space-y-10 animate-fade-in flex flex-col items-center">
                 <div class="text-center space-y-3">
-                    <h2 class="text-4xl font-black text-slate-800 tracking-tight uppercase tracking-tighter">Perfil Acadêmico</h2>
-                    <p class="text-slate-500 font-medium">Escolha sua identidade para o simulado.</p>
+                    <h2 class="text-4xl font-black text-slate-800 tracking-tight uppercase tracking-tighter">Perfil de Simulação</h2>
+                    <p class="text-slate-500 font-medium">Como você deseja atuar hoje?</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full px-6">
                     <div onclick="selectArch('lawyer')" id="arch-lawyer" class="arch-card cursor-pointer p-10 rounded-[2.5rem] bg-white border-2 border-transparent hover:border-blue-600 shadow-sm transition-all flex flex-col items-center group">
@@ -263,16 +259,16 @@
         <!-- Screen Apostila -->
         <div id="screen-apostila" class="hidden-screen flex-grow flex flex-col items-center p-6 bg-slate-50">
             <div class="flex flex-col lg:flex-row justify-between items-center w-full max-w-5xl gap-6 mb-8 no-print">
-                <button onclick="showScreen('landing')" class="p-3 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all">
+                <button onclick="showScreen('archetypes')" class="p-3 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 18-6-6 6-6"/></svg>
                 </button>
-                <h2 class="text-3xl font-black text-slate-800 tracking-tight uppercase">Material de Estudo</h2>
+                <h2 class="text-3xl font-black text-slate-800 tracking-tight uppercase">Resumo Fundamentado</h2>
                 <button onclick="window.print()" class="bg-emerald-700 text-white px-8 py-3 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl">Imprimir PDF</button>
             </div>
             <div id="printable-apostila" class="w-full max-w-5xl bg-white rounded-[3rem] shadow-2xl p-10 lg:p-20 border border-slate-100 space-y-12">
                 <div class="border-b-4 border-emerald-700 pb-10 text-center space-y-4">
-                    <h1 class="text-5xl font-black text-slate-900 uppercase tracking-tighter text-shadow-premium">Direito do Trabalho I</h1>
-                    <p class="text-xl font-bold text-emerald-700 tracking-[0.2em] uppercase">Simulado Fundamentado</p>
+                    <h1 class="text-5xl font-black text-slate-900 uppercase tracking-tighter">Direito do Trabalho I</h1>
+                    <p class="text-xl font-bold text-emerald-700 tracking-[0.2em] uppercase">Material de Estudo Dinâmico</p>
                 </div>
                 <div id="apostila-content" class="space-y-16 text-slate-800 leading-relaxed"></div>
             </div>
@@ -284,14 +280,14 @@
                 <div class="h-3 bg-slate-100 w-full"><div id="progress-bar" class="h-full bg-emerald-700 transition-all duration-700" style="width: 0%"></div></div>
                 <div class="p-10 lg:p-16 space-y-12">
                     <div class="flex justify-between items-center">
-                        <span id="question-counter" class="text-[10px] font-black tracking-[0.5em] text-slate-400 uppercase">QUESTÃO 01</span>
-                        <span id="current-xp" class="bg-emerald-700 text-white px-6 py-2.5 rounded-full font-black text-sm tabular-nums">XP: 0</span>
+                        <span id="question-counter" class="text-[10px] font-black tracking-[0.5em] text-slate-400 uppercase">LABOR LEX / QUESTÃO 01</span>
+                        <span id="current-xp" class="bg-emerald-700 text-white px-6 py-2.5 rounded-full font-black text-sm tabular-nums shadow-xl">XP: 0</span>
                     </div>
                     <div class="space-y-8">
                         <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
                             <div class="space-y-4 flex-grow">
                                 <span id="question-case" class="text-[10px] font-black bg-slate-900 text-white px-4 py-1.5 rounded-lg tracking-widest uppercase inline-block">TÓPICO</span>
-                                <h2 id="question-text" class="text-3xl font-bold text-slate-800 leading-[1.2]">Carregando...</h2>
+                                <h2 id="question-text" class="text-3xl font-bold text-slate-800 leading-[1.2]">Carregando fundamento...</h2>
                             </div>
                             <div class="flex flex-col gap-3 shrink-0">
                                 <button onclick="askGeminiIA()" id="btn-ai" class="flex items-center gap-4 bg-white border-2 border-emerald-700 text-emerald-700 px-8 py-4 rounded-[1.5rem] hover:bg-emerald-700 hover:text-white transition-all font-black text-xs ai-pulse uppercase tracking-[0.1em] shadow-xl">
@@ -307,9 +303,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="ai-response-box" class="hidden bg-slate-900 text-slate-300 p-10 rounded-[2.5rem] text-base leading-relaxed border border-slate-700 shadow-2xl relative">
+                        <div id="ai-response-box" class="hidden bg-slate-900 text-slate-300 p-10 rounded-[2.5rem] text-base leading-relaxed border border-slate-700 shadow-2xl relative ring-4 ring-emerald-500/20">
                             <div id="ai-text" class="custom-scrollbar max-h-56 overflow-y-auto pr-6 font-medium italic leading-loose"></div>
-                            <button onclick="this.parentElement.classList.add('hidden')" class="mt-8 text-[10px] font-black uppercase text-slate-500 hover:text-white">Fechar</button>
+                            <button onclick="this.parentElement.classList.add('hidden')" class="mt-8 text-[10px] font-black uppercase text-slate-500 hover:text-white transition-colors">Fechar</button>
                         </div>
                     </div>
                     <div id="options-container" class="grid grid-cols-1 gap-5"></div>
@@ -322,7 +318,7 @@
                                     <p id="feedback-explanation" class="text-base text-slate-700 font-semibold leading-relaxed"></p>
                                     <div id="feedback-link-container" class="mt-4 flex gap-4"></div>
                                 </div>
-                                <button onclick="generateDeepCase()" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-emerald-700 transition-all">CASO PRÁTICO ✨</button>
+                                <button onclick="generateDeepCase()" class="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-xl">CASO PRÁTICO ✨</button>
                             </div>
                         </div>
                         <button onclick="nextQuestion()" class="mt-10 w-full bg-slate-900 text-white font-black py-6 rounded-[1.5rem] shadow-2xl hover:bg-emerald-700 transition-all uppercase tracking-widest text-xs">PRÓXIMA QUESTÃO</button>
@@ -337,15 +333,15 @@
                 <div class="relative inline-block text-emerald-600">
                     <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
-                <h2 class="text-4xl font-black text-slate-800 tracking-tighter uppercase">Simulado Finalizado</h2>
+                <h2 class="text-4xl font-black text-slate-800 tracking-tighter uppercase">Ciclo Finalizado</h2>
                 <div class="py-10 border-y border-slate-50">
                     <p id="final-score" class="text-8xl font-black text-emerald-700 tabular-nums tracking-tighter">0</p>
                     <p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.6em] mt-3">XP ACUMULADO</p>
                 </div>
                 <div id="ai-challenge-box" class="bg-slate-50 p-8 rounded-[2rem] border-2 border-slate-200 text-left space-y-4">
                     <h3 class="font-black text-sm uppercase text-slate-800">PETIÇÃO FINAL ✨</h3>
-                    <div id="challenge-content" class="text-sm text-slate-600 italic">Gere um desafio prático baseado no seu desempenho.</div>
-                    <button id="btn-challenge" onclick="generateFinalChallenge()" class="bg-emerald-700 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest">GERAR DESAFIO FINAL ✨</button>
+                    <div id="challenge-content" class="text-sm text-slate-600 italic">Desafio acadêmico final baseado no seu desempenho global.</div>
+                    <button id="btn-challenge" onclick="generateFinalChallenge()" class="bg-emerald-700 text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl">GERAR DESAFIO FINAL ✨</button>
                 </div>
                 <button onclick="location.reload()" class="w-full bg-slate-900 text-white font-black py-6 rounded-[2rem] shadow-2xl hover:bg-emerald-700 transition-all uppercase tracking-[0.4em] text-[10px]">REINICIAR MARATONA</button>
             </div>
@@ -356,10 +352,10 @@
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
                 <p class="text-slate-900 font-black text-2xl tracking-tighter uppercase leading-none mb-2">Benedito Palheta</p>
-                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Direitos Reservados © 2026</p>
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Desenvolvimento Tecnológico © 2026</p>
             </div>
             <div class="flex gap-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                <a href="#" onclick="openDonationModal()" class="hover:text-emerald-600">Apoio</a>
+                <a href="#" onclick="openDonationModal()" class="hover:text-emerald-600">Contribuição</a>
                 <a href="https://wa.me/5563981202076" target="_blank" class="hover:text-emerald-600">WhatsApp</a>
             </div>
         </div>
@@ -370,6 +366,7 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+        // FIREBASE SETUP
         let fbConfig = {};
         try { if (typeof __firebase_config !== 'undefined') fbConfig = typeof __firebase_config === 'string' ? JSON.parse(__firebase_config) : __firebase_config; } catch (e) {}
         const apiKey = ""; 
@@ -387,19 +384,42 @@
         let score = 0;
         let rankings = [];
 
+        // BANCO DE QUESTÕES COMPLETO (31 QUESTÕES)
         const QUIZ_DATA = [
-            { id: 1, case: "Conceito de Empregador", question: "Segundo a CLT, qual é a definição de empregador e sua principal característica em relação aos riscos do negócio?", options: ["É a pessoa física que presta serviço eventual e compartilha los riscos.", "É a empresa que admite, assalaria e dirige, assumindo exclusivamente os riscos (Alteridade).", "É o órgão público que coordena serviços sem fins lucrativos.", "Qualquer pessoa que contrata serviços sem vínculo de subordinação."], correct: 1, hint: "O risco da atividade econômica não pode ser repassado ao empregado.", explanation: "Empregador é a empresa que admite, assalaria e dirige a prestação de serviços, assumindo exclusivamente os riscos da atividade econômica (Princípio da Alteridade).", ref: "2" },
-            { id: 2, case: "Requisitos do Empregado", question: "Quais são os requisitos cumulativos do Art. 3º da CLT para que uma pessoa física seja considerada empregada?", options: ["Pessoa jurídica, eventualidade, autonomia e salário.", "Pessoa física, não eventualidade, subordinação e onerosidade.", "Pessoa física, eventualidade, subordinação e gratuidade.", "Pessoa jurídica, não eventualidade, autonomia e salário."], correct: 1, hint: "A falta de qualquer um deles descaracteriza o vínculo.", explanation: "Requisitos: Pessoa física, não eventualidade, subordinação (dependência) e onerosidade (salário).", ref: "3" },
-            { id: 3, case: "Registro de Ponto", question: "A partir de quantos trabalhadores o estabelecimento é obrigado a manter o registro de entrada e saída?", options: ["Mais de 5 trabalhadores.", "Mais de 10 trabalhadores.", "Mais de 20 trabalhadores.", "Todos os estabelecimentos, independente do número."], correct: 2, hint: "O limite mudou pela Lei da Liberdade Econômica em 2019.", explanation: "É obrigatório para estabelecimentos com mais de 20 trabalhadores.", ref: "74" },
-            { id: 4, case: "Atividade Externa", question: "Um vendedor externo que participa de reuniões fixas diárias e recebe fiscalização constante pode ser excluído do controle de jornada?", options: ["Sim, pois todo trabalho fora da empresa é isento.", "Não, se houver possibilidade de controle, as horas extras são devidas.", "Sim, conforme decisão livre do empregador.", "Não, pois vendedores externos nunca podem ser excluídos."], correct: 1, hint: "A exceção exige que a atividade seja incompatível com a fixação de horário.", explanation: "Se houver possibilidade de controle (reuniões, ordens por telefone), os requisitos da exceção não estão presentes.", ref: "62" },
-            { id: 5, case: "Cargo de Confiança", question: "Quais requisitos fundamentam o enquadramento de um gerente na exceção de jornada do cargo de confiança?", options: ["Apenas o nome do cargo na carteira de trabalho.", "Encargo de gestão e gratificação salarial mínima de 40%.", "Trabalhar mais de 12 horas por dia voluntariamente.", "Não precisar bater ponto e ganhar o salário mínimo."], correct: 1, hint: "Envolve poder de mando e um padrão salarial diferenciado.", explanation: "Exige exercício de encargo de gestão e padrão salarial superior ao salário efetivo acrescido de, no mínimo, 40%.", ref: "62" },
-            { id: 6, case: "Intervalo Intrajornada", question: "Cleiton trabalha 5h e Monique 7h. Quais os intervalos para repouso a que cada um tem direito?", options: ["Cleiton: 30 min; Monique: 1h.", "Cleiton: 15 min; Monique: 1h no mínimo.", "Ambos têm direito a 1h.", "Cleiton: Isento; Monique: 15 min."], correct: 1, hint: "Regra de 15 min aplica-se entre 4h e 6h de jornada.", explanation: "Até 4h: Isento; Entre 4h e 6h: 15 min; Acima de 6h: 1h no mínimo.", ref: "71" },
-            { id: 7, case: "Sobreaviso", question: "Como deve ser remunerado o empregado que aguarda chamado em casa (regime de sobreaviso)?", options: ["Salário normal integral.", "Salário acrescido de 50%.", "As horas são contadas à razão de 1/3 do salário normal.", "Não há remuneração se não houver chamado."], correct: 2, hint: "Não confunda com prontidão (na empresa).", explanation: "As horas de sobreaviso são contadas à razão de 1/3 do salário normal.", ref: "244" },
-            { id: 8, case: "Férias e Faltas", question: "Se o empregado teve entre 24 e 32 faltas injustificadas no período, a quantos dias de férias terá direito?", options: ["30 dias.", "24 dias.", "18 dias.", "12 dias."], correct: 2, hint: "O número de dias diminui conforme aumentam as faltas.", explanation: "Tabela de férias: de 24 a 32 faltas geram direito a 18 dias de férias.", ref: "130" },
-            { id: 9, case: "Pagamento de Férias", question: "Qual a consequência se o empregador pagar as férias após o prazo legal (2 dias antes do início)?", options: ["Apenas multa administrativa.", "Pagamento em dobro da remuneração e do terço.", "Perda do direito de conceder as férias.", "O empregado pode faltar mais 5 dias."], correct: 1, hint: "Veja a Súmula 450 do TST.", explanation: "O pagamento fora do prazo gera a obrigação de pagar a remuneração em dobro.", ref: "145" },
-            { id: 10, case: "Sucessão de Empregadores", question: "O que ocorre com os contratos quando há mudança na propriedade da empresa?", options: ["Os contratos são automaticamente rescindidos.", "A sucessão não afeta os direitos adquiridos nem os contratos vigentes.", "O novo dono pode reduzir todos os salários.", "O antigo dono continua sendo o único responsável por 10 anos."], correct: 1, hint: "A empresa é a unidade econômica que responde.", explanation: "A mudança na propriedade não afeta os contratos de trabalho dos respectivos empregados.", ref: "448" }
+            { id: 1, case: "Conceito de Empregador", question: "Segundo a CLT, qual é a definição de empregador e sua principal característica em relação aos riscos do negócio?", options: ["Pessoa física que presta serviço eventual e compartilha os riscos.", "Empresa que admite, assalaria e dirige, assumindo exclusivamente os riscos.", "Órgão público que coordena serviços sem fins lucrativos.", "Qualquer pessoa que contrata serviços sem subordinação."], correct: 1, hint: "O risco da atividade econômica não pode ser repassado ao empregado.", explanation: "Empregador é a empresa que admite, assalaria e dirige a prestação de serviços, assumindo exclusivamente os riscos da atividade econômica (Princípio da Alteridade).", ref: "2" },
+            { id: 2, case: "Requisitos do Empregado", question: "Quais são os requisitos cumulativos do Art. 3º da CLT para que uma pessoa física seja considerada empregada?", options: ["Pessoa jurídica, eventualidade, autonomia e salário.", "Pessoa física, não eventualidade, subordinação e onerosidade.", "Pessoa física, eventualidade, subordinação e gratuidade.", "Pessoa jurídica, não eventualidade, autonomia e salário."], correct: 1, hint: "Lembre-se que a falta de qualquer um deles descaracteriza o vínculo.", explanation: "Requisitos: Pessoa física, não eventualidade, subordinação (dependência) e onerosidade (salário).", ref: "3" },
+            { id: 3, case: "Registro de Ponto", question: "A partir de quantos trabalhadores o estabelecimento é obrigado a manter o registro de entrada e saída?", options: ["Mais de 5 trabalhadores.", "Mais de 10 trabalhadores.", "Mais de 20 trabalhadores.", "Todos os estabelecimentos."], correct: 2, hint: "O limite mudou pela Lei da Liberdade Econômica em 2019.", explanation: "É obrigatório para estabelecimentos com mais de 20 trabalhadores.", ref: "74" },
+            { id: 4, case: "Exceção Jornada - Externa", question: "Um vendedor externo que participa de reuniões fixas e recebe fiscalização por telefone pode ser excluído do controle de jornada?", options: ["Sim, pois todo trabalho fora da empresa é isento.", "Não. Se houver possibilidade de controle, as horas extras são devidas.", "Sim, conforme decisão livre do empregador.", "Não, pois vendedores externos nunca podem ser excluídos."], correct: 1, hint: "A exceção exige que a atividade seja incompatível com a fixação de horário.", explanation: "Se houver possibilidade de controle (reuniões, ordens por telefone), os requisitos da exceção não estão presentes.", ref: "62" },
+            { id: 5, case: "Cargo de Confiança", question: "Quais os requisitos fundamentais para enquadrar um gerente na exceção de jornada do cargo de confiança?", options: ["Apenas o nome do cargo na carteira.", "Exercício de encargo de gestão e gratificação salarial mínima de 40%.", "Trabalhar mais de 12 horas voluntariamente.", "Não bater ponto e ganhar o salário mínimo."], correct: 1, hint: "Envolve o poder de mando e uma gratificação salarial mínima de 40%.", explanation: "Exercício de encargo de gestão e padrão salarial superior ao salário efetivo acrescido de, no mínimo, 40%.", ref: "62" },
+            { id: 6, case: "Intervalo Intrajornada", question: "Cleiton trabalha 5h e Monique 7h. Quais os intervalos para repouso a que cada um tem direito?", options: ["Cleiton: 30 min; Monique: 1h.", "Cleiton: 15 min; Monique: 1h no mínimo.", "Ambos têm direito a 1h.", "Cleiton: Isento; Monique: 15 min."], correct: 1, hint: "A regra de 15 minutos aplica-se entre 4h e 6h de jornada.", explanation: "Até 4h: Isento; Entre 4h e 6h: 15 min; Acima de 6h: 1h no mínimo.", ref: "71" },
+            { id: 7, case: "Remuneração Sobreaviso", question: "Como deve ser remunerado o empregado que aguarda chamado em sua própria casa?", options: ["Salário normal integral.", "Salário acrescido de 50%.", "Horas contadas à razão de 1/3 do salário normal.", "Não há remuneração sem chamado."], correct: 2, hint: "Não confunda com prontidão (na empresa).", explanation: "As horas de sobreaviso são contadas à razão de 1/3 do salário normal.", ref: "244" },
+            { id: 8, case: "Férias e Faltas", question: "Se o empregado teve entre 24 e 32 faltas injustificadas, a quantos dias de férias terá direito?", options: ["30 dias.", "24 dias.", "18 dias.", "12 dias."], correct: 2, hint: "O número de dias de férias diminui conforme aumentam as faltas.", explanation: "Tabela de férias: de 24 a 32 faltas geram direito a 18 dias de férias.", ref: "130" },
+            { id: 9, case: "Pagamento Férias", question: "Qual a consequência se o empregador pagar as férias após o prazo legal (2 dias antes do início)?", options: ["Apenas multa administrativa.", "Pagamento em dobro da remuneração e do terço.", "Perda do direito de conceder as férias.", "O empregado ganha 5 dias a mais."], correct: 1, hint: "Existe uma súmula do TST que determina o pagamento em dobro.", explanation: "O pagamento fora do prazo gera a obrigação de pagar a remuneração em dobro. (Súmula 450 TST).", ref: "145" },
+            { id: 10, case: "Sucessão Empregadores", question: "O que ocorre com os direitos adquiridos quando há mudança na estrutura jurídica da empresa?", options: ["Contratos são rescindidos automaticamente.", "A sucessão não afeta os direitos adquiridos nem os contratos vigentes.", "O novo dono pode reduzir salários livremente.", "O antigo dono continua sendo o único responsável por 5 anos."], correct: 1, hint: "A empresa (unidade econômica) é que responde.", explanation: "A sucessão não afeta os direitos adquiridos nem os contratos de trabalho dos respectivos empregados.", ref: "448" },
+            { id: 11, case: "Grupo Econômico", question: "Como as empresas integrantes de um mesmo grupo respondem pelas obrigações trabalhistas?", options: ["Cada uma responde apenas pelos seus funcionários.", "São solidariamente responsáveis para os efeitos da relação de emprego.", "A empresa líder responde sozinha.", "O sócio majoritário responde pessoalmente de imediato."], correct: 1, hint: "A responsabilidade não é individual, mas de todas as empresas do grupo.", explanation: "Empresas do mesmo grupo são solidariamente responsáveis pelas obrigações trabalhistas.", ref: "2" },
+            { id: 12, case: "Trabalhador Avulso", question: "Quem é o responsável por escalar e gerir a mão de obra do avulso no sistema portuário?", options: ["Sindicato da categoria.", "Ministério do Trabalho.", "O OGMO (Órgão Gestor de Mão de Obra).", "Prefeitura local."], correct: 2, hint: "Órgão de gestão obrigatório por lei.", explanation: "O OGMO é o responsável pela escalação e gestão do trabalho avulso portuário.", ref: "1" },
+            { id: 13, case: "Capacidade Aprendiz", question: "Qual a idade mínima permitida para o trabalho na condição de aprendiz?", options: ["12 anos.", "14 anos.", "16 anos.", "18 anos."], correct: 1, hint: "A regra geral é 16 anos, mas o aprendiz é a exceção constitucional.", explanation: "A partir dos 14 anos é permitido o trabalho na condição de aprendiz.", ref: "403" },
+            { id: 14, case: "Primazia Realidade", question: "Se o papel diz 'autônomo' mas na prática há subordinação e horário, o que prevalece?", options: ["O contrato assinado prevalece sempre.", "Prevalece a realidade dos fatos sobre a forma documental.", "O juiz anula os dois vínculos.", "O trabalhador perde seus direitos."], correct: 1, hint: "O que ocorre no 'chão de fábrica' vale mais que o papel.", explanation: "Pelo Princípio da Primazia da Realidade, os fos superam a forma documental.", ref: "3" },
+            { id: 15, case: "Estabilidade Acidentária", question: "Mariana, em contrato por prazo determinado, sofre acidente de trabalho. Tem direito à estabilidade?", options: ["Não, o contrato termina na data prevista.", "Sim, goza de garantia provisória mesmo em contratos a termo.", "Somente se o patrão concordar.", "Apenas se o contrato for superior a 1 ano."], correct: 1, hint: "O TST uniformizou o entendimento para contratos a termo.", explanation: "A garantia de emprego por acidente aplica-se inclusive aos contratos por prazo determinado.", ref: "1" },
+            { id: 16, case: "Registro de Ponto", question: "De acordo com a CLT atual, para quem o registro de ponto é obrigatório?", options: ["Todos os empregadores.", "Estabelecimentos com mais de 10 empregados.", "Estabelecimentos com mais de 20 empregados.", "Apenas indústrias."], correct: 2, hint: "O limite foi alterado pela Lei da Liberdade Econômica.", explanation: "O registro de ponto é obrigatório para estabelecimentos com mais de 20 trabalhadores.", ref: "74" },
+            { id: 17, case: "Exceções Jornada", question: "Quais categorias não estão sujeitas ao regime de controle de jornada (não recebem extras)?", options: ["Externos incompatíveis e ocupantes de cargos de gestão.", "Apenas estagiários e aprendizes.", "Apenas trabalhadores em home office.", "Gerentes e vendedores internos."], correct: 0, hint: "Um trabalha na rua sem controle e o outro possui alto poder de mando.", explanation: "Art. 62 exclui externos incompatíveis com controle e gerentes de cargos de gestão.", ref: "62" },
+            { id: 18, case: "Turno Prontidão", question: "No regime de Prontidão (na empresa), qual a duração máxima permitida para o turno?", options: ["24 horas.", "12 horas.", "8 horas.", "48 horas."], correct: 1, hint: "É o dobro do tempo permitido para o regime de sobreaviso.", explanation: "O turno máximo de prontidão é de 12 horas.", ref: "244" },
+            { id: 19, case: "Remuneração Prontidão", question: "Como devem ser remuneradas as horas em regime de Prontidão (dentro da empresa)?", options: ["1/3 do salário normal.", "50% de adicional.", "Razão de 2/3 do salário hora normal.", "Salário integral apenas."], correct: 2, hint: "O percentual é maior que o do sobreaviso.", explanation: "As horas de prontidão são contadas à razão de 2/3 do salário normal.", ref: "244" },
+            { id: 20, case: "Descanso Interjornada", question: "Qual o período mínimo de descanso obrigatório entre duas jornadas de trabalho?", options: ["8 horas.", "11 horas consecutivas.", "24 horas.", "15 horas."], correct: 1, hint: "É o tempo para o trabalhador ir para casa, dormir e retornar.", explanation: "Entre duas jornadas, deve haver um intervalo mínimo de 11 horas consecutivas.", ref: "66" },
+            { id: 21, case: "Responsabilidade OGMO", question: "Qual a natureza da responsabilidade do OGMO e operadores portuários por encargos trabalhistas?", options: ["Individual por navio.", "Subsidiária apenas.", "Solidariamente responsáveis.", "Responsabilidade limitada ao capital social."], correct: 2, hint: "Se um não pagar, o outro responde integralmente pela dívida.", explanation: "Respondem solidariamente pelo pagamento dos encargos e obrigações.", ref: "1" },
+            { id: 22, case: "Quitação Menor", question: "Menor de 18 anos pode dar quitação de rescisão sem assistência dos responsáveis?", options: ["Sim, se for emancipado.", "Não, é vedado dar quitação sem assistência legal.", "Sim, a CLT permite.", "Apenas com testemunhas sindicais."], correct: 1, hint: "Menores possuem capacidade relativa no Direito do Trabalho.", explanation: "É vedado ao menor de 18 anos dar quitação sem assistência dos responsáveis legais.", ref: "439" },
+            { id: 23, case: "Hermenêutica Trabalhista", question: "Se uma norma permite mais de uma interpretação, qual deve ser adotada pelo juiz?", options: ["A mais antiga.", "A mais favorável ao trabalhador.", "A mais favorável à empresa.", "A mais curta."], correct: 1, hint: "Princípio basilar que visa equilibrar a hipossuficiência.", explanation: "Princípio da Proteção (In Dubio Pro Operario): interpretação mais favorável ao trabalhador.", ref: "1" },
+            { id: 24, case: "Empregador Rural", question: "O que se considera empregador rural de acordo com a Lei 5.889/73?", options: ["Apenas proprietários de terras.", "Pessoa física ou jurídica que explore atividade agroeconômica.", "Apenas multinacionais do agronegócio.", "Apenas quem possui mais de 10 funcionários."], correct: 1, hint: "O conceito não se limita à propriedade da terra.", explanation: "Considera-se empregador rural quem explore atividade agroeconômica, proprietário ou não.", ref: "1" },
+            { id: 25, case: "Aprendiz PCD", question: "Qual a regra sobre a duração do contrato de aprendizagem para pessoas com deficiência?", options: ["Limite máximo de 1 ano.", "Limite máximo de 2 anos, sem exceções.", "Pode se estender por além de dois anos.", "Contrato deve ser vitalício."], correct: 2, hint: "Existe uma exceção ao limite de 2 anos para este grupo específico.", explanation: "Contrato de aprendizagem pode superar 2 anos quando o aprendiz for PCD.", ref: "428" },
+            { id: 26, case: "Intervalo Doméstico", question: "Empregado doméstico pode ter intervalo reduzido para 30 minutos?", options: ["Não, nunca.", "Sim, mediante ajuste prévio e por escrito.", "Sim, apenas com decisão do sindicato.", "Apenas se residir no emprego."], correct: 1, hint: "Requer um ajuste formal e escrito entre as partes.", explanation: "Redução do intervalo para 30 min é permitida se ajustada previamente por escrito.", ref: "1" },
+            { id: 27, case: "Noturno Rural", question: "Qual o adicional e horário noturno para o trabalhador rural na lavoura?", options: ["20% - 22h às 5h.", "25% - 21h às 5h.", "20% - 21h às 5h.", "15% - 20h às 4h."], correct: 1, hint: "Diferente do trabalho urbano da CLT comum.", explanation: "Trabalho rural (lavoura): adicional de 25% entre 21h e 5h.", ref: "1" },
+            { id: 28, case: "Mãe Social", question: "O trabalho da 'Mãe Social' em instituições de assistência caracteriza vínculo de emprego?", options: ["Não, é serviço voluntário.", "Sim, existe efetivo vínculo de emprego.", "Apenas se houver remuneração superior a 2 salários.", "Apenas se houver contrato de terceirização."], correct: 1, hint: "Possui lei específica e não se confunde com voluntariado.", explanation: "Lei 7.644/87 define que há vínculo empregatício entre instituição e mãe social.", ref: "1" },
+            { id: 29, case: "Contrato Indígena", question: "Contratos com indígenas que habitam parques dependem de qual formalidade?", options: ["Nenhuma formalidade extra.", "Prévia aprovação da FUNAI.", "Apenas registro em cartório.", "Autorização do Cacique apenas."], correct: 1, hint: "Envolve fiscalização do órgão estatal de proteção.", explanation: "Estatuto do Índio exige aprovação da FUNAI para validade do contrato.", ref: "1" },
+            { id: 30, case: "Grupo Solidariedade", question: "Responsabilidade solidária no grupo econômico depende de prestação a todas as empresas?", options: ["Sim, obrigatoriamente.", "Não. Emerge da lei pela simples existência do grupo.", "Apenas se as empresas tiverem o mesmo CNPJ.", "Sim, se não for fraude."], correct: 1, hint: "Responsabilidade decorre da lei pela simples existência do grupo.", explanation: "A solidariedade do grupo econômico não depende da prestação direta a todas as empresas.", ref: "2" },
+            { id: 31, case: "Garantia Emprego", question: "Quem entre as opções NÃO possui garantia provisória de emprego?", options: ["Gestante.", "Vice-presidente eleito da CIPA.", "Presidente de sindicato que apenas firma acordo (não eleito).", "Empregado acidentado."], correct: 2, hint: "Estabilidade do dirigente exige que ele tenha sido eleito para o cargo.", explanation: "A garantia de emprego exige a condição de eleito para o cargo de representação.", ref: "543" }
         ];
 
+        // --- SISTEMA DE ACESSO ---
         async function init() {
             if (!auth) { showScreen('landing'); return; }
             onAuthStateChanged(auth, (u) => { if (u) { loadRankings(); showScreen('landing'); } });
@@ -428,6 +448,7 @@
             }
         }
 
+        // --- GEMINI API HELPERS ---
         async function callGemini(prompt, systemInstruction = "") {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             const payload = { contents: [{ parts: [{ text: prompt }] }], systemInstruction: { parts: [{ text: systemInstruction }] } };
@@ -444,7 +465,7 @@
             if (btn) btn.classList.add('animate-pulse');
             try {
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
-                const payload = { contents: [{ parts: [{ text: `Diga pausadamente: ${text}` }] }], generationConfig: { responseModalities: ["AUDIO"], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Aoede" } } } }, model: "gemini-2.5-flash-preview-tts" };
+                const payload = { contents: [{ parts: [{ text: `Diga com voz de mentor: ${text}` }] }], generationConfig: { responseModalities: ["AUDIO"], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Aoede" } } } }, model: "gemini-2.5-flash-preview-tts" };
                 const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                 const data = await response.json();
                 const pcmData = data.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
@@ -470,6 +491,7 @@
             return new Blob([view.buffer], { type: 'audio/wav' });
         }
 
+        // --- UI FUNCTIONS ---
         function showScreen(id) {
             stopAudio();
             document.getElementById('screen-loading').style.display = 'none';
@@ -506,7 +528,6 @@
         window.goToArchetypes = () => { 
             userName = document.getElementById('input-name').value.trim(); 
             if (!userName) return; 
-            // Liberar botão da apostila após identificação
             document.getElementById('header-btn-apostila').classList.remove('hidden');
             showScreen('archetypes'); 
         };
